@@ -1,0 +1,56 @@
+version: "3.3"
+
+services:
+
+  mysql:
+    image: mysql/mysql-server:5.7
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: zabbix-mysql
+      MYSQL_ROOT_PASSWORD: l0g1c2515
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: l0g1c2515
+    networks:
+      - zabbixnet
+
+  zabbix-proxy:
+    build:
+      context: /home
+      dockerfile: Dockerfile-proxy
+    container_name: zbxproxy
+    restart: always
+    environment:
+      DB_SERVER_HOST: mysql
+      MYSQL_DATABASE: zabbix-mysql
+      MYSQL_USER: zabbix
+      MYSQL_PASSWORD: l0g1c2515
+      ZBX_HOSTNAME: “nome do provedor" #Igual ao nome do proxy configurado no zabbix
+      ZBX_SERVER_HOST: monitoramento.logicasistemas.com.br  #IP do Zabbix-Server
+      ZBX_STARTPOLLERS: 15
+      ZBX_STARTPINGERS: 10
+      ZBX_STARTPOLLERSUNREACHABLE: 10
+      ZBX_STARTDISCOVERERS: 10
+      ZBX_HOUSEKEEPINGFREQUENCY: 4
+      ZBX_TIMEOUT: 10
+      ZBX_SENDERFREQUENCY: 5
+      ZBX_STARTDBSYNCERS: 4
+      ZBX_CACHESIZE: 512M
+      ZBX_HISTORYCACHESIZE: 512M
+      ZBX_TRENDCACHESIZE: 512M
+      TZ: America/Recife
+    volumes:
+      - /usr/lib/zabbix/alertscripts:/usr/lib/zabbix/alertscripts
+      - /usr/lib/zabbix/externalscripts:/usr/lib/zabbix/externalscripts
+    networks:
+      - zabbixnet
+    depends_on:
+      - "mysql"
+
+networks: # criando a rede zabbixnet
+  zabbixnet:
+    driver: bridge
+      
+volumes:
+  alertscripts:
+  externalscripts:
