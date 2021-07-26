@@ -2,5 +2,5 @@
 
 ## Cianet
 
-### Neste repositório temos alguns scripts escritos em Python para auxiliar nas coletas das informações das ONU's / OLT Cianet
+- Neste repositório temos alguns scripts escritos em Python para auxiliar nas coletas das informações das ONU's / OLT Cianet
 
