@@ -3,9 +3,9 @@
 	error_reporting(E_ALL ^ E_WARNING);
 	snmp_set_quick_print(TRUE);
 	$EMS   = '172.16.81.2';
-    $UN    = 'logica';
-    $PWD   = 'logica.2017';
-    $OLTID = "{$argv[5]}";
+        $UN    = 'logica';
+        $PWD   = 'logica.2017';
+        $OLTID = "{$argv[5]}";
 	$SLOT  = snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.2.{$argv[1]}");
 	$PON   = snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.3.{$argv[1]}");
 	$MAC   = str_replace('"', "", snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.10.{$argv[1]}"));
