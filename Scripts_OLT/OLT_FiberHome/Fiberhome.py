@@ -12,8 +12,8 @@ from subprocess import Popen, PIPE, STDOUT
 
 mon       = '127.0.0.1'	# IP do Zabbix
 mode      = argv[1]	    # launch para disparar e run para executar como subprocesso
-olt       = argv[2]		# Nome do host enviado pelo Zabbix
-ip        = argv[3]		# IP do host enviado pelo Zabbix
+olt       = argv[2]         # Nome do host enviado pelo Zabbix
+ip        = argv[3]	    # IP do host enviado pelo Zabbix
 community = argv[4]	    # Comunidade do host enviado pelo Zabbix
 
 def snmpwalk(ipaddr, oid, community):
