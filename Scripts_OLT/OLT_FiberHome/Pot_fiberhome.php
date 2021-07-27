@@ -5,9 +5,9 @@
     //apt-get install -y php-snmp;
 	error_reporting(E_ALL ^ E_WARNING);
 	snmp_set_quick_print(TRUE);
-	$EMS   = '172.16.81.2';
-	$UN    = 'logica';
-	$PWD   = 'logica.2017';
+	$EMS   = '0.0.0.0';        // Endereço IP do UNM2000/ANM2000
+	$UN    = '*******';        // Usuário de acesso ao UNM2000/ANM2000
+	$PWD   = '*******';        // Senha de acesso ao UNM2000/ANM2000
 	$OLTID = "{$argv[5]}";
 	$SLOT  = snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.2.{$argv[1]}");
 	$PON   = snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.3.{$argv[1]}");
@@ -18,8 +18,8 @@
 	while (!$FP){
 	echo "teste";
     	sleep(1);
-		$FP    = stream_socket_client("tcp://{$EMS}:3337", $errno, $errstr, 5);
-		//$FP    = stream_socket_client("tcp://{$EMS}:5101", $errno, $errstr, 5);
+		$FP    = stream_socket_client("tcp://{$EMS}:3337", $errno, $errstr, 5);   // Caso a conexão TCP não funcione na porta 3337 testar utilizando a porta 5101 
+		//$FP    = stream_socket_client("tcp://{$EMS}:5101", $errno, $errstr, 5);  
                 //stream_set_blocking($FP, FALSE);
 	}
     //echo("OK");
