@@ -1,5 +1,7 @@
 #!/usr/bin/python
 # Este script utiliza encoding: utf-8
+# Contato: pauloeduardodojunior19gmail.com
+# Este Script possui como resultado um JSON com algumas informações pertinentes da ONU, potência, voltagem, corrente, Temperatura 
 
 import socket
 import telnetlib
@@ -12,17 +14,17 @@ from subprocess import Popen, PIPE, STDOUT
 
 ####-Estes campos devem ser alterados de acordo com as especificaçoes de cada cliente
 
-zbx        = '127.0.0.1' # IP do Zabbix para o zabbix-sender
-user       = 'GEPON'      # Nome do usuario TELNET
-password   = 'GEPON'      # Senha do usuario TELNET
-mode       = argv[1]     # check-potencias-onu para coletar a potencia da ONU
-olt        = argv[2]     # Nome do host enviado pelo Zabbix
-ip         = argv[3]     # IP da OLT enviado pelo Zabbix
-community  = argv[4]     # Comunidade do host enviado pelo Zabbix
+zbx          = '127.0.0.1'  # IP do Zabbix para o zabbix-sender
+user         = 'GEPON'      # Nome do usuario TELNET
+password     = 'GEPON'      # Senha do usuario TELNET
+mode         = argv[1]      # check-potencias-onu para coletar a potencia da ONU
+olt          = argv[2]      # Nome do host enviado pelo Zabbix
+ip           = argv[3]      # IP da OLT enviado pelo Zabbix
+community    = argv[4]      # Comunidade do host enviado pelo Zabbix
 
 #- Função para realizar a consulta snmpwalk
 def snmpwalk(ipaddr, oid, community):
-    result = []
+    result   = []
     attempts = 3
     params = ["/usr/bin/snmpbulkwalk", "-v2c", "-r3", "-Ir", "-Oqv", "-c", community, ipaddr, oid] #-Oqv only prints the value, which is good for script
     for attempt in range(attempts):
@@ -110,12 +112,12 @@ if mode == 'check-potencias-onu':
                 if label == 'RECV POWER':
                     pot = value
             response.append({
-                "{#MAC}" : mac, 
-                "{#RECV_POWER}" : pot or '',
-                "{#TEMPERATURE}" : temp or '',
-                "{#VOLTAGE}" : volt or '',
+                "{#MAC}"          : mac, 
+                "{#RECV_POWER}"   : pot or '',
+                "{#TEMPERATURE}"  : temp or '',
+                "{#VOLTAGE}"      : volt or '',
                 "{#BIAS_CURRENT}" : bias or '',
-                "{#SEND_POWER}" : power or '',
+                "{#SEND_POWER}"   : power or '',
             })
 
     #- A função json.dumps transforma o dict em um json válido
