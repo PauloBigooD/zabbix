@@ -5,7 +5,7 @@
 	$EMS   = '0.0.0.0';        // Endereço IP do UNM2000/ANM2000
 	$UN    = '*******';        // Usuário de acesso ao UNM2000/ANM2000
 	$PWD   = '*******';        // Senha de acesso ao UNM2000/ANM2000
-        $OLTID = "{$argv[5]}";
+        $OLTID = "{$argv[5]}";     // Endereço IP da OLT
 	$SLOT  = snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.2.{$argv[1]}");
 	$PON   = snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.3.{$argv[1]}");
 	$MAC   = str_replace('"', "", snmp2_get("{$argv[3]}", "{$argv[4]}", ".1.3.6.1.4.1.5875.800.3.10.1.1.10.{$argv[1]}"));
