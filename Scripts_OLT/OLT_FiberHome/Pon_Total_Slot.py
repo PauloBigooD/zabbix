@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # Este script utiliza encoding: utf-8
+# Contato: pauloeduardodojunior19gmail.com
 
 import shlex
 from sys import argv
