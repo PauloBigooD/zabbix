@@ -2,7 +2,7 @@
 #!/usr/bin/python
 # Este script utiliza encoding: utf-8
 #Contato: pauloeduardodojunior19gmail.com 
-# ./fiberhome.py "run" "OLT_FIBERHOME" 192.168.30.3:161 "gpon"
+# Exemplo de teste: ./fiberhome.py "run" "OLT_FIBERHOME" 192.168.30.3:161 "gpon"
 
 
 import shlex
@@ -10,7 +10,7 @@ from sys import argv
 from itertools import groupby
 from subprocess import Popen, PIPE, STDOUT
 
-mon       = '127.0.0.1'	# IP do Zabbix
+mon       = '127.0.0.1'	    # IP do Zabbix
 mode      = argv[1]	    # launch para disparar e run para executar como subprocesso
 olt       = argv[2]         # Nome do host enviado pelo Zabbix
 ip        = argv[3]	    # IP do host enviado pelo Zabbix
