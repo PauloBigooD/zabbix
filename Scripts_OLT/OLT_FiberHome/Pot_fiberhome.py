@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # Este script utiliza encoding: utf-8
-#Contato: pauloeduardodojunior19gmail.com 
+# Contato: pauloeduardodojunior19gmail.com 
 
 import shlex
 from sys import argv
@@ -10,7 +10,7 @@ import math
 
 index     = argv[1]            # Index snmp
 ip        = argv[2]            # IP do host enviado pelo Zabbix
-community = argv[3]        	   # Comunidade do host enviado pelo Zabbix
+community = argv[3]            # Comunidade do host enviado pelo Zabbix
 
 def snmpwalk(ipaddr, oid, community):
 	result   = []
