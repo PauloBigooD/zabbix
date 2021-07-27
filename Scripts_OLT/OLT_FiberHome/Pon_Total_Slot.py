@@ -6,14 +6,14 @@ from sys import argv
 from itertools import groupby
 from subprocess import Popen, PIPE, STDOUT, check_output
 
-ip   = argv[1]		# IP do host enviado pelo Zabbix
-community = argv[2]	# Comunidade do host enviado pelo Zabbix
-escolha = argv[3]   # escolha de opção desejada
-slot = argv[4]      #slot desejado
-pon = argv[5]       #pon desejada
+ip               = argv[1]	 # IP do host enviado pelo Zabbix
+community        = argv[2]	 # Comunidade do host enviado pelo Zabbix
+escolha          = argv[3]       # escolha de opção desejada
+slot             = argv[4]       # Slot desejado
+pon              = argv[5]       # PON desejada
 
 def snmpbulkwalk(ipaddr, oid, community):
-	result = []
+	result   = []
 	attempts = 3
 	if escolha == "pon": 
 		params = ["/usr/bin/snmpbulkwalk", "-v2c", "-Ir", "-c", community, ipaddr, oid]
@@ -80,4 +80,3 @@ elif escolha == "pon":
 	print(int(Pon(ip,community)))
 else:
 	print(int(Slot(ip, community)))
-
