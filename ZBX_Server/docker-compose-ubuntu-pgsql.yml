@@ -7,9 +7,9 @@ services:
     ports:
       - "10005:10005"                                      # Caso necessário alterar as portas
     environment:
-      POSTGRES_DB: zabbix
-      POSTGRES_USER: zabbix
-      POSTGRES_PASSWORD: Password
+      POSTGRES_DB: zabbix                                  # Nome do banco de dados Zabbix
+      POSTGRES_USER: zabbix                                # Usuário do banco de dados Zabbix
+      POSTGRES_PASSWORD: Password                          # Senha do banco de dados Zabbix
       TZ: America/Recife
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -49,8 +49,8 @@ services:
     ports:
       - "10002:10001"                                       # Caso necessário alterar as portas
     environment:
-      POSTGRES_USER: zabbix
-      POSTGRES_PASSWORD: Password
+      POSTGRES_USER: zabbix                                 # Usuário do banco de dados Zabbix
+      POSTGRES_PASSWORD: Password                           # Senha do banco de dados Zabbix
       ZBX_SERVER_NAME: "Server_Name"                        # Substituir para o nome do servidor ZBX 
       TZ: America/Recife
       PHP_TZ: America/Recife
@@ -61,7 +61,7 @@ services:
       - "10000:10000"                                        # Caso necessário alterar as portas
     environment:
       GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app,grafana-piechart-panel 
-      GF_SECURITY_ADMIN_PASSWORD: Password
+      GF_SECURITY_ADMIN_PASSWORD: Password                   # Senha de acesso ao usuário admin do Grafana
       GF_USERS_DEFAULT_THEME: light
       TZ: America/Recife
     volumes:
