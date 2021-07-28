@@ -41,3 +41,32 @@
 
      docker-compose version 
 
+
+############################# Lista de comandos Docker ##############################
+
+-> Listar todos os containers em execusão 
+    docker ps
+    
+-> Listar todos os containers que estão em execução ou não
+    
+    docker ps -a
+    
+-> Start, Stop, Restart, Remove
+    
+    docker start   "Id-Container"
+    docker stop    "Id-Container"
+    docker restart "Id-Container"
+    docker rm      "Id-Container"
+    
+    docker rm   -f "Id-Container" <--> OBS: Se o container estiver em execusão pode ser preciso forçar a remoção
+    
+-> Listar imagens dos containers
+
+    docker images
+    
+-> Verificar uso do container
+    
+    docker stats
+
+
+Fonte : https://docs.docker.com/engine/reference/commandline/docker/
