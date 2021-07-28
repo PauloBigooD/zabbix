@@ -3,7 +3,7 @@ version: "3.3"
 services:
 
   postgres-server:
-    image: postgres:10.1
+    image: postgres:10.1                                    # Modificar de acordo com a versão desejada
     ports:
       - "10005:10005"                                       # Caso necessário alterar as portas
     environment:
@@ -45,7 +45,7 @@ services:
       - externalscripts:/usr/lib/zabbix/externalscripts
 
   zabbix-web:
-    image: zabbix/zabbix-web-nginx-pgsql:ubuntu-4.4-latest
+    image: zabbix/zabbix-web-nginx-pgsql:ubuntu-4.4-latest  # Modificar de acordo com a versão desejada
     ports:
       - "10002:10001"                                       # Caso necessário alterar as portas
     environment:
@@ -56,7 +56,7 @@ services:
       PHP_TZ: America/Recife
 
   grafana:
-    image: grafana/grafana:6.2.2
+    image: grafana/grafana:6.2.2                             # Modificar de acordo com a versão desejada
     ports:
       - "10000:10000"                                        # Caso necessário alterar as portas
     environment:
