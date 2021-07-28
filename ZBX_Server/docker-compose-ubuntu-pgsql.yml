@@ -5,7 +5,7 @@ services:
   postgres-server:
     image: postgres:10.1
     ports:
-      - "10005:10005"                                      #mudar as portas
+      - "10005:10005"                                      # Caso necessário alterar as portas
     environment:
       POSTGRES_DB: zabbix
       POSTGRES_USER: zabbix
@@ -19,11 +19,11 @@ services:
       context: /home/logicasistemas/
       dockerfile: Dockerfile                                # Dockerfile de dependências do Zabbix-Server
     ports:
-      - "10051:10051"#mudar as portas
-      - "10001:10002"#mudar as portas
+      - "10051:10051"                                       # Caso necessário alterar as portas
+      - "10001:10002"                                       # Caso necessário alterar as portas
     environment:
-      POSTGRES_USER: zabbix
-      POSTGRES_PASSWORD: Password      
+      POSTGRES_USER: zabbix                                 # Usuário do banco de dados Zabbix
+      POSTGRES_PASSWORD: Password                           # Senha do banco de dados Zabbix
       ZBX_STARTPOLLERS: 100                                 # Quantidade de processos pré-alocados dos pollers 
       ZBX_STARTPINGERS: 100                                 # Quantidade de processos pré-alocados dos ICMP pingers - 1
       ZBX_STARTTRAPPERS: 100
