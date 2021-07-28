@@ -8,9 +8,9 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: zabbix-mysql
-      MYSQL_ROOT_PASSWORD: l0g1c2515
-      MYSQL_USER: zabbix
-      MYSQL_PASSWORD: l0g1c2515
+      MYSQL_ROOT_PASSWORD: password                             # Senha do banco de dados Zabbix
+      MYSQL_USER: zabbix                                        # Usuário do banco de dados Zabbix
+      MYSQL_PASSWORD: password                                  # Senha do banco de dados Zabbix
     networks:
       - zabbixnet
 
@@ -23,10 +23,10 @@ services:
     environment:
       DB_SERVER_HOST: mysql
       MYSQL_DATABASE: zabbix-mysql
-      MYSQL_USER: zabbix
-      MYSQL_PASSWORD: l0g1c2515
-      ZBX_HOSTNAME: “nome do provedor" #Igual ao nome do proxy configurado no zabbix
-      ZBX_SERVER_HOST: monitoramento.logicasistemas.com.br  #IP do Zabbix-Server
+      MYSQL_USER: zabbix                                        # Usuário do banco de dados Zabbix
+      MYSQL_PASSWORD: password                                  # Senha do banco de dados Zabbix
+      ZBX_HOSTNAME: Proxy_Name                                  # Igual ao nome do proxy configurado no zabbix
+      ZBX_SERVER_HOST: IP_ZBX_Server                            # IP do Zabbix-Server
       ZBX_STARTPOLLERS: 15
       ZBX_STARTPINGERS: 10
       ZBX_STARTPOLLERSUNREACHABLE: 10
@@ -47,7 +47,7 @@ services:
     depends_on:
       - "mysql"
 
-networks: # criando a rede zabbixnet
+networks:                                                       # Criando a rede zabbixnet
   zabbixnet:
     driver: bridge
       
