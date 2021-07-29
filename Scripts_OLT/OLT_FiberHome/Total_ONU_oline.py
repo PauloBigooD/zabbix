@@ -6,10 +6,10 @@ from sys import argv
 from itertools import groupby
 from subprocess import Popen, PIPE, STDOUT
 
-mon            = '127.0.0.1'	# IP do Zabbix
-olt            = argv[1]		# Nome do host enviado pelo Zabbix
-ip             = argv[2]		# IP do host enviado pelo Zabbix
-community      = argv[3]	    # Comunidade do host enviado pelo Zabbix
+mon           	   = '127.0.0.1'	# IP do Zabbix
+olt           	   = argv[1]		# Nome do host enviado pelo Zabbix
+ip            	   = argv[2]		# IP do host enviado pelo Zabbix
+community     	   = argv[3]	    	# Comunidade do host enviado pelo Zabbix
 
 def snmpbulkwalk(ipaddr, oid, community):
 	result     = []
