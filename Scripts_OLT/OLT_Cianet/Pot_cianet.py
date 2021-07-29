@@ -9,7 +9,7 @@ import math
 
 index          = argv[1]            # Index snmp
 ip             = argv[2]            # IP do host enviado pelo Zabbix
-community      = argv[3]	        # Comunidade do host enviado pelo Zabbix
+community      = argv[3]	    # Comunidade do host enviado pelo Zabbix
 
 # Definindo a  função responsável pela comunicação SNMP
 def snmpwalk(ipaddr, oid, community):
