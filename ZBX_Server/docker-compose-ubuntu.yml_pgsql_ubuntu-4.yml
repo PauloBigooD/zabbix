@@ -16,7 +16,7 @@ services:
 
   zabbix-server:
     build:
-      context: /home/logicasistemas/
+      context: /home/
       dockerfile: Dockerfile                                # Dockerfile de dependências do Zabbix-Server
     ports:
       - "10051:10051"                                       # Caso necessário alterar as portas
