@@ -31,6 +31,7 @@ def snmpwalk(ipaddr, oid, community):
 
 def send_zabbix(jstring, olt, key):
  	# Verificar onde é o caminho do zabbix_sender, em caso de dúvida executar linha do comando manualmente
+	# Instalar o Zabbix_Sender: apt-get install zabbix-sender
 	send = shlex.split("/usr/local/bin/zabbix_sender -z " + mon + " -s \"" + olt + "\" -k " + key + " -o")
 	send.append(jstring)
 	send = Popen(send, stdout=PIPE, stderr=STDOUT)
