@@ -44,7 +44,7 @@ services:
       ZBX_HISTORYCACHESIZE: 500M
       ZBX_HOUSEKEEPINGFREQUENCY: 6      
       ZBX_TRENDCACHESIZE: 500M
-      ZBX_NODEADDRESS: 172.20.0.1:10051
+      ZBX_NODEADDRESS: 172.18.0.1:10051
     depends_on:
       - postgres-server
 
@@ -97,7 +97,7 @@ services:
       - '10050:10050'
     environment:
       - ZBX_HOSTNAME=Zabbix server
-      - ZBX_SERVER_HOST=172.20.0.1
+      - ZBX_SERVER_HOST=172.18.0.1
 
 volumes:
   pgdata:
