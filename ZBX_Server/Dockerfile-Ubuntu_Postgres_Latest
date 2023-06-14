@@ -6,5 +6,5 @@ RUN export DEBIAN_FRONTEND=noninteractive
 RUN apt-get install -y tzdata
 RUN dpkg-reconfigure --frontend noninteractive tzdata 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install vim php-snmp php php-fpm php-opcache python3 python3-pip snmp -y
+RUN apt-get install vim snmpd snmp libsnmp-dev php-snmp php php-fpm php-opcache python3 python3-pip net-tools -y
 RUN pip3 install pyTelegramBotAPI
