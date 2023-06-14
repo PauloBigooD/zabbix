@@ -22,7 +22,7 @@ services:
     container_name: zabbix-server
 #    image: zabbix_test-zabbix-server
     build:
-      context: /home/paulo/Zabbix_test
+      context: /home/                                       # Ajustar conforme localização do arquivo Dockerfile
       dockerfile: Dockerfile 
     networks:
       - network-zabbix
