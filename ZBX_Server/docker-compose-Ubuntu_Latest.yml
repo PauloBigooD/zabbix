@@ -1,0 +1,106 @@
+version: '3.8'
+
+networks:
+  network-zabbix:
+    driver: bridge
+
+services:
+  postgres-server:    # The Postgres Database Service
+    image: postgres:latest
+    networks:
+     - network-zabbix
+    restart: always
+    environment:   # Username, password and database name variables
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+      PG_DATA: /var/lib/postgresql/data/pgdata                  #data storage
+    volumes:
+      - ./var/lib/postgresql/data:/var/lib/postgresql/data
+
+  zabbix-server:
+    container_name: zabbix-server
+#    image: zabbix_test-zabbix-server
+    build:
+      context: /home/paulo/Zabbix_test
+      dockerfile: Dockerfile 
+    networks:
+      - network-zabbix
+    links:
+      - postgres-server
+    restart: always
+    ports:
+      - '10051:10051'
+    volumes:
+      - alertscripts:/usr/lib/zabbix/alertscripts
+      - externalscripts:/usr/lib/zabbix/externalscripts
+    environment:
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+      ZBX_SERVER_NAME: zabbix-PauloBigooD
+      PHP_TZ: America/Recife
+      ZBX_CACHESIZE: 500M
+      ZBX_HISTORYCACHESIZE: 500M
+      ZBX_HOUSEKEEPINGFREQUENCY: 6      
+      ZBX_TRENDCACHESIZE: 500M
+      ZBX_NODEADDRESS: 172.20.0.1:10051
+    depends_on:
+      - postgres-server
+
+  zabbix-frontend:
+    container_name: zabbix-frontend
+    image: zabbix/zabbix-web-apache-pgsql:ubuntu-latest
+    networks:
+      - network-zabbix
+    links:
+      - postgres-server
+    restart: always
+    ports:
+      - '80:8080'
+      - '443:8443'
+    environment:
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: zabbix
+      POSTGRES_DB: zabbix
+      PHP_TZ: America/Recife
+    depends_on:
+      - postgres-server
+
+  grafana:
+    image: grafana/grafana:latest-ubuntu                    # Modificar de acordo com a versão desejada
+    networks:
+      - network-zabbix
+    ports:
+      - '3000:3000'                                         # Caso necessário alterar as portas 
+    environment:
+      GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app,grafana-piechart-panel,yesoreyeram-boomtable-panel,grafana-worldmap-panel,grafana-clock-panel,yesoreyeram-boomtheme-panel,briangann-gauge-panel,agenty-flowcharting-panel
+      GF_SECURITY_ADMIN_PASSWORD: Grafana                  # Senha de acesso ao usuário admin do Grafana
+      GF_USERS_DEFAULT_THEME: dark
+      TZ: America/Recife
+    volumes:
+      - grafana:/var/lib/grafana
+
+  zabbix-agent:
+    container_name: zabbix-agent
+    image: zabbix/zabbix-agent2:ubuntu-latest
+    user: root
+    networks:
+      - network-zabbix
+    links:
+      - zabbix-server
+    restart: always
+    privileged: true
+    volumes:
+      - /var/run:/var/run
+    ports:
+      - '10050:10050'
+    environment:
+      - ZBX_HOSTNAME=Zabbix server
+      - ZBX_SERVER_HOST=172.20.0.1
+
+volumes:
+  pgdata:
+  alertscripts:
+  externalscripts:
+  grafana:
