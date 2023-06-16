@@ -73,6 +73,7 @@ services:
       - network-zabbix
     ports:
       - '3000:3000'                                         # Caso necessário alterar as portas 
+    restart: always
     environment:
       GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app,grafana-piechart-panel,yesoreyeram-boomtable-panel,grafana-worldmap-panel,grafana-clock-panel,yesoreyeram-boomtheme-panel,briangann-gauge-panel,agenty-flowcharting-panel
       GF_SECURITY_ADMIN_PASSWORD: Grafana                  # Senha de acesso ao usuário admin do Grafana
