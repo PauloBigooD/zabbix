@@ -60,7 +60,7 @@ services:
       - postgres-server
     restart: always
     ports:
-      - '8080:8080'                                                # By default Zabbix Web uses port 80, if necessary it can be changed. Example 8080:8080 - external-port:internal-port
+      - '80:8080'                                                # By default Zabbix Web uses port 80, if necessary it can be changed. Example 8080:8080 - external-port:internal-port
       - '443:8443'
     environment:
       POSTGRES_USER: zabbix                                      # Database user
@@ -96,7 +96,7 @@ services:
     networks:
       - network-zabbix
     ports:
-      - '3030:3000'                                              # By default Grafana uses port 3000, if necessary it can be changed. Example 3030:3000 - external-port:internal-port 
+      - '3000:3000'                                              # By default Grafana uses port 3000, if necessary it can be changed. Example 3030:3000 - external-port:internal-port 
     restart: always
     environment:
       GF_INSTALL_PLUGINS: alexanderzobnin-zabbix-app,grafana-piechart-panel,yesoreyeram-boomtable-panel,grafana-worldmap-panel,grafana-clock-panel,yesoreyeram-boomtheme-panel,briangann-gauge-panel,agenty-flowcharting-panel
