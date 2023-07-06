@@ -1,0 +1,26 @@
+apiVersion: 1
+
+datasources:
+- name: Zabbix
+  type: alexanderzobnin-zabbix-datasource
+  access: proxy
+  url: http://"Enter your local ip"/api_jsonrpc.php
+  isDefault: true
+  jsonData:
+    # Zabbix API credentials
+    username: Admin
+    password: zabbix
+    # Trends options
+    trends: true
+    trendsFrom: "7d"
+    trendsRange: "4d"
+    # Cache update interval
+    cacheTTL: "1h"
+    # Alerting options
+    alerting: true
+    addThresholds: false
+    alertingMinSeverity: 3
+    # Disable acknowledges for read-only users
+    disableReadOnlyUsersAck: true
+  version: 1
+  editable: true
