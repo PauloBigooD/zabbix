@@ -3,6 +3,10 @@ version: '3.8'
 networks:
   network-zabbix:
     driver: bridge
+    ipam:
+        config:
+            - subnet: 172.18.0.0/24
+              gateway: 172.18.0.1
 
 services:
   postgres-server:                                              # The Postgres Database Service
