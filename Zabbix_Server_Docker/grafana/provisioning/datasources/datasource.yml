@@ -4,7 +4,7 @@ datasources:
 - name: Zabbix
   type: alexanderzobnin-zabbix-datasource
   access: proxy
-  url: http://"Enter your local ip"/api_jsonrpc.php
+  url: http://172.18.0.1/api_jsonrpc.php
   isDefault: true
   jsonData:
     # Zabbix API credentials

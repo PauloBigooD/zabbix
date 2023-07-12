@@ -84,11 +84,15 @@ services:
     privileged: true
     volumes:
       - /var/run:/var/run
+      - ./etc/zabbix/externalscripts:/etc/zabbix/externalscripts
+      - ./etc/zabbix/alertscripts:/etc/zabbix/alertscripts
+      - ./etc/zabbix/zabbix_agent2.conf:/etc/zabbix/zabbix_agent2.conf
     ports:
       - '10050:10050'
     environment:
       - ZBX_HOSTNAME=Zabbix server
       - ZBX_SERVER_HOST=172.18.0.1
+      - ZBX_USERPARAMETER=custom.vfs.dev.discovery[*],/etc/zabbix/externalscripts/queryDisks.pl  
 
   grafana:
     container_name: grafana-server
