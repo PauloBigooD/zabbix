@@ -10,6 +10,7 @@ networks:
 
 services:
   postgres-server:                                              # The Postgres Database Service
+    container_name: postgres-server
     image: postgres:latest                                      # Container image
     networks:
      - network-zabbix
@@ -91,8 +92,7 @@ services:
       - '10050:10050'
     environment:
       - ZBX_HOSTNAME=Zabbix server
-      - ZBX_SERVER_HOST=172.18.0.1
-      - ZBX_USERPARAMETER=custom.vfs.dev.discovery[*],/etc/zabbix/externalscripts/queryDisks.pl  
+      - ZBX_SERVER_HOST=172.18.0.1  
 
   grafana:
     container_name: grafana-server
