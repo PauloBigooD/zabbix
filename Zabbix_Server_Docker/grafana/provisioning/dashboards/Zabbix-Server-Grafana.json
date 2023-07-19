@@ -1,0 +1,6305 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 3,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Zabbix server: Linux: Load average (1m avg)"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server:  Load average (15m avg)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server:  Load average (1m avg)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: Online CPUs"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-YlBl"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Linux:)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/Linux: Load average.*/"
+          },
+          "itemTag": {
+            "filter": "component: cpu"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Container)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:..zabbix-server..)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Container /zabbix-server: Online CPUs"
+          },
+          "itemTag": {
+            "filter": "component: cpu"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "true",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "CPU Load",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 10,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<center>\n<img src=\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbcAAABzCAMAAAAsR7zPAAAAk1BMVEXUAAD////roKDRAADli4v54+PZLy/zvb3YDw/0wMDWNzfYMTHie3v++fnwqKjWGxveXFzplJT+8vLeaGjZKir+9/f76en87e3319f54OD2z8/ur6/0ycnZOzvliYn54eHeU1PbRETqm5vicnLgZmbcS0vvrq7fWlrieHjWGRnkgoLncnLZQEDaJCTz0dHzvr7eYmKXcwbOAAAP5klEQVR4nO1da1fisBZtCSio5VGB8hIBQUUB/f+/7gIzkp3mdU6Kc+9dK/vTjDSnaXaTnJxXkyQiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIuI3IaqBf5drdu6/ISnxNfono3P/UK+CjyfSXd6hySO5b9tHx53n84+Hl/XiJiE9q/jwi+rTRO1X8lE6ht9xRN9Jz7mQDVakBsfn6TbSKmiQWNiNoclhR+xbcnPruHOWDfKiMZrdTh+OA+4T1XQ95knU8CTqdt30i3qSDVv3ht/3E3nBsEsYnt2lQZbe+i8/Q3xX4234SeiYqGU4SnXqhLv5IvUhH03avuF28gaPc5jUfaLu5OVG3pJFLq+Y9f2P+QEdIFx+RmXeKPOtM1PaTPfEzjnnm4pGu+/sCJG3I7LGys2clzdRA3E97/gs4KV+Ie+I/4K3j4E6Mi/EzjF4O42Qa7jpvJ2wcD2Ul7dEFPKS3PewW1hWb037pfkW/4K3WqnRB7FzPN7S4cIuisdbOnKsV37ekgREeVYXUZeXPm/IKtu/4G0xKjU63NE6x+QtzR6topi8pY03qygCb6IHouquRxQgLaO+z8m/0UvmWqs1rXNc3hz7A5e39NlKHGW+4eJXLB2P2MRVkrrvHyHWsBYHoOFXdPdTrVWbth7wecvfLZLZvKXjjaVXFN6S7lBeNbE/LaowDeeuWsau1+ahdsCnazV9NxAbPAT8QeZtdQbyNn/4UDGvr6bjvCx5tDQ/PPBWfGiieqvbhiZqtjX3isRbE/f0Bxsh4kXedfDBsiQ1tx0WxBrf3DFhauNa/wNaH5G3G71Fs7/bLHqlt6JteUzZ64aud4qzqNdSJy0qPIm3pN+Sl+U3tqvgomerqKugr6xdTf/4d+RCLI8DBZs3qyrTeRxijyx6N/Jmm+xiu1aJM19G4028wwZ0sDxuW16SWSVdBQJulaZ7//CL3eXqyaccPALhRN6Os0cxq5gtfBTeTqIU1de8vtF4SwRs65l5Q8c3zrYxXwcCbTL2dRtbSFtJG/59ez3e1CE6bu+mS2i8JWKvLCdVeEsSUASMSs49mJFav0ubspBMSdrF5fLhWrxfVsoBpS2Vt0SgrmRcKIm8JckSZlxmtIBTeROPsPXODIoAbPxD5wtQFWKDW8nMuttiEzlBR82keVnzB5S5SuYNbfRpz8QLmTeBRrm5qZPk+YZK/kA/U6P5madLcnEDh8Sjxk1pIi4enKwmEiGJmF2Vty1caTy+knlL+jB3jas5mbckAfeVtnwLmNicE3cAcO0fkmweYn1ZK4b70/ZxaV98+4mj8yZe4IUyrQN03kRbLm/jaryJNxiwV/U4iAreyHbEvw5Qlcwp69yxd1LVO4+BkGvD6zV5SxZS685NlzJ4AwtSo+J8U0x8yosuEtj8iOajMIg5nnCntFs1ny8tzoZMIR/EZo4AMHjbyVUnM4VO0HlLlnITb5h+5/D2hOeKDo4ZnO6oPu4wrNEQRFRbwdGd/21xETEwbvoKGLzdgU5t0gIZvN2gacV0KwZvqk4JDwwRADy7JBdPqJOMiY2acjRrfzoHRy3/MYLBG1w6qLZOJnu5RlReJ1Xf48VbIdagmP+uLomhBkOL8bYMdBL9LF7yBDj2vmcM3u6lpa9hGszA+Vadtw2slMXPIODq8KurpGKRyGg6SYIv20Uzu5NvmtdNyNnfpPZeUZ/E/a2iPnmCeIf9Zfr3b2gMJ4cmBACd6Wm6otIG79rFvQqiJj63N0eflINtDNJg6JPfUmWoen47A175wTmUTeCJ+zftkqKLztVbmvPsiHf5Wkld4fHyt2zhac84v3XllfVK9hIlaNC49XB5a8LkmtwdJfZh6aTZCsMgluhy+yK3A98hGASe5No+9whg2EvAd1bNPok7efZ0Dd5EH0bvyJN4l/8dLAgCQqGat+gxRzAH1rIRHOFSj4UzyD45+DZdwLBPggvaeAWXt0SAd/SoG6AtlRwvGYAOmreyNf1OD5JstGV2pdXOY+ui8wbTrW08z5N5Q1XPbMdg85YkoPWPNxgJRDHNB2K7QjuJP/z2go7sYBuHqiltXx7jMpk3UJsskUFU3tBAXcnfreAThAJt/pNQOEQXg40ZljSxgbFUfuhJie6thurvBktw2jJHrBL93duZ32wYwFtHD2k7DQsjXpKNe0WV9NsULwCfTUt1U4A+5X4PKLwJ8YLbr81oRIovEXUlb8iyiAXwppy+5Q2IjUMg0FM6oiW7/W0p272WfpJbyJDOmzndsN8b4zI+sIXhqvFcRjzVGihq2LX0KoS3ZK6mSJyQuTNRquEZblQYNTULwPdUjmmGcIXMucIjb8ubewV3m+5nrRzzaLfkAG/DsqinzffLtDyuhTWAPog3xXf5BwwNj4tA89a5qXx3NecBuHqNFsAfMOOVs8IeX8aMV85mO6uoMN765ZVy9IuzDc4yaUZNYf2DuwtvusMG0h4aLj2Rx9u45gju4/F2cOVkhfEm6mqAbv6LhhIMcv+xiRIh5IlqqO/v0oKQuYyddN6yybTmNAjQectn03bHJSqMt9JKmflsRRWwQe1qYrT5WNGRlBt8rLBQThz2cDJv2XThyakn81a0d57s/FDe9rgbT3/PDbBv4fPcsWgTdal6GOaBWMhxerBLoc+38Wj27szuJfM2eB4dFk7mQnlDc1da+71lUjkrMk/20EezkQ+ewC6Ztb8Nhj3HcLP2t3zsiqEI5E3sFZWVbublQaBthmv/FAu5xBrjtuBQPrHHYXLz3wZ2Pzw3/81hPg/lTe1BwTBhMABWqpThKf0BzFWzeHh4ex4t8pbpMAz3rS0vG3mjiarZBjaQt7Kpyx8WFQCxxEnNWsZPgOQvS7JlXxqnXq3BusjbqldG+2tyOIye1bP3yFLUBnjLNVGr19bhKKqhnr2nV7RzJcmbku11wm+slHd4ShwvmK0xjdK2wkovXGEVr+YtGqtqbTfzqbIAWWJ/gbdns50r2S96UyVpumUZmxDeFB/m355eX6VUUrILtkFmKyObc9uTdSW11vpBJH+ASL57+C4fjEZUkj9AJC9t/5E1hLdmT7dPujSyQGC80YBWGwyxkIO0sg3SXh7Mx7ZNiex/e8PMxVfTxkTNf0vWuNIY9/UQ3rqm6gfFlb3d4lOJKOe3/5at7dkfEK5ge3q6v/sGFwjTmYUeX3KPAY8m43IAb/f6KnmCKSmuAjCLJCQRci/9NNZiEkq4gi35lBGHh2nnueF3RjzXHvbLmeGCAN4gEijDs81VV8onNG+ZxsCHpWzusMJhIpHlEgZvSj1GwyxhxHOJhdyLckMkHj8uCAYk/cTc2IG5iEAYcE4XAb49iGwdOlQaLDhg8XYyeEuSFXRb/5XBG6akp1/6xfz5Bq/UdJ+g3eSLWrfQDyw3UhALMimAanCz5b5vwx4yqS2+KBZvmCqhr84s3pZS0lj3erPjJyFq6VReSalt0CMIoACjG9PMqg26JIBWMmy5IPm1uL1ZvGHmiW5b4/Cm1CHUzRpM3gTUlxycbUNYjjO/TqqpkoVgi43yiDDrTm6YNRMWbxgfrudj8HiDrbetXc3kbY/VLv4okG+wcF7F7S2UuCNjYosfhhOmF+aEOh5vL3KWDDUFm8cb2NQPmtmbmY8DCXD5j0mAVxDWD6XqShFUU0MtKERFZuw9jzdIyck1RYfFWyLdg4awdRZv+DZJ9QtCf9NB9bCuJlYWGxgqmVGg2U9JmJhE8fa3J0lNph2MeLxBCH+mqWYs3rC8mly9FTadoVEkKJXrwvwMmD3GwfjNcDseb5AnqismwbylWg1ZDm9NOJ2gAxlXz6zm7Y8TmN9DLpigCaGVjtdhMh3weOvjMakab0BN+un40cvbG2z2Shgj1nl11AQmQCyVIk6B7lglloiDicFxxuPt7nq87aBjVXjDcr1fitsGTwe0illWKKok+ZsaKkS5jCcZA0MeDY83KB6WVVwn0dlfYZ1UTtyL0m+wKXEKYmvAaKNGiJ3kDBjpRdcPKM9ksBzw9MlH2Fkr8oZl/8J5EzL2N830aAz0OwSfvhX1feAsne6S8iDX84yyQUKOXK5blHi8rdAuUYk3ZS6E65MC9gxDHWo4bLASnZRbKMmJ4fWiQH2ifNFHMYrpgZQ83sAuUWixGzzeYKcvtNeJXH8SfIIjU9QwLDahZRU+UScJrz0qv6yUZjSf4EYm/LS0FizeIPQvHWq/suzKsmqfiRpqnV4o9WZ2tO1Qowg6Le+wXuokOJQWTxLEAg8dOOprk4TFG9qOdKMfizfc6vVsFiJv6Dc3zwTl2w2OjwxYscWO5oF2kkQ1k1E9guDU0ErIc3hTLKu6zYDjN8VDV6Y7Tom8wc6TW/I9m/h9tQA7h1IwoUIBmyf5wGNSNdgjlnJp1SLSGbwpRR8MX1HjxCmgQ8MQTU3jDeeSdUgx3LEgFj2THZX1KlLPV3g8glCrJ3cCFNlyzxm8YWq+yeJHr1/SVAKLDVXPKLyJG1jC7FUjxGfuvJWzo2rBhCp5IjB25JMkntTLX4Mg16EX6ocB78N5E3eKKFNcE2m+gfs5d0wkSBNkfIfy3HKPhuBWFYvLvZTjSNYoYwsDVTrFEHlrbkqx5uFxeJ0XVZTJn0v5jhgaytw7PYz+iJH0JPqYeX9Y2j+UbIMUBe8OIxEEm5VWV+Tt3hIcvtt8ljxHmclLT4gz7+82j6qkU+l8HRTeoEvm+kWXKztwO0YyI/qH0uz25YGLDzmzpKAhJxL3Wz5kof6CvL0/lnHq6/x1XDaImuOrsZ7C2iiqPtVFGcPRCN/JhFVy6ClCIVChoicPf4TagS/4sStiZyeswBQ540tFmpC3XIOl523jS4t5VGRRZtXc/11aCBweeKloor2AvE0pBUGD8KOAQs625TM+FmBAT8vKGxGDtnkK8L/bZy0Z4J9vcJAghJJjVD/laxhnXI03LGLa4KV2dWTLsVI2hM9b1rNsEXzerNWzvLzByYZyKGuiSZ/wNYwzrscbqIUj2r1/oOzi1Xhb2pQANm8jW5knH29KxDtJtUdTDzWu/2q8beHmTH8CnteVuG4ub44PpjN5c3myPLzdwAtMW/bEQ85tcjXexFzeu/DcU++4lKZ8V5rFW/FlOG5fwOEtK9rb8HoK4Moif0MRS2fTVPFr8dYk2XUsQF0Yjcv0ujPjw9RdF4dev2R8eHVWQvHwtgbrEzlRd48friLZKU0fjeXhzzngE8797LxirEaOcRj3Lf12JWT5cDS7Xe3cQ33kzR/WeRLVmvaefKIgSG+m8YZ53PTYKiXVg2Sz6tYqov0niOwN/kLtrcS2LZuDhazz7rrz6oT5w+Oi7xvpI5p151McJfVOovYEUXvZ2XdNy797lUI58d492azOqfL5fwnVzvY/Ieoa5Zt+qZJQRERERERERERERERERERERERERERERERERETEGf8Bs7MI7nyg5cEAAAAASUVORK5CYII=\" min-width=\"200px\" max-width=\"200px\" width=\"200px\" align=\"middle\" alt=\"Computador iuriCode\">\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 2,
+        "x": 12,
+        "y": 0
+      },
+      "id": 13,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<center>\n<img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/320px-Docker_%28container_engine%29_logo.svg.png\" min-width=\"200px\" max-width=\"200px\" width=\"200px\" alt=\"Computador iuriCode\">\n\n",
+        "mode": "html"
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 3,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: Linux: Total memory"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: Linux: Memory utilization"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: Linux: Available memory"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 10,
+        "x": 14,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "timezone": [
+          "America/Recife"
+        ],
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Linux: Total memory"
+          },
+          "itemTag": {
+            "filter": "component: memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Linux: Memory utilization"
+          },
+          "itemTag": {
+            "filter": "component: memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Linux: Available memory"
+          },
+          "itemTag": {
+            "filter": "component: memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "Memoria",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "colors": [
+        "rgba(255, 255, 255, 0.97)",
+        "#E0B400",
+        "#C4162A"
+      ],
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "decimals": 0,
+      "fontSizes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62,
+        64,
+        66,
+        68,
+        70
+      ],
+      "fontTypes": [
+        "Arial",
+        "Avant Garde",
+        "Bookman",
+        "Consolas",
+        "Courier",
+        "Courier New",
+        "Garamond",
+        "Helvetica",
+        "Open Sans",
+        "Palatino",
+        "Times",
+        "Times New Roman",
+        "Verdana"
+      ],
+      "format": "percent",
+      "gauge": {
+        "animateNeedleValueTransition": true,
+        "animateNeedleValueTransitionSpeed": 100,
+        "edgeWidth": 0.05,
+        "gaugeRadius": 180,
+        "gaugeUnits": "",
+        "innerCol": "rgba(13, 80, 96, 0)",
+        "labelFontSize": 18,
+        "markerEndEnabled": false,
+        "markerEndShape": {
+          "$$hashKey": "object:204",
+          "id": 0,
+          "name": "arrow"
+        },
+        "markerStartEnabled": false,
+        "markerStartShape": {
+          "$$hashKey": "object:207",
+          "id": 2,
+          "name": "stub"
+        },
+        "maxNeedleAngle": 320,
+        "maxTickAngle": 300,
+        "maxValue": 100,
+        "minValue": 0,
+        "needleCol": "#C4162A",
+        "needleLengthNeg": 0.2,
+        "needleTickGap": 0.05,
+        "needleWidth": 5,
+        "outerEdgeCol": "rgba(0, 0, 0, 0)",
+        "padding": 0.05,
+        "pivotCol": "#999",
+        "pivotRadius": 0.1,
+        "show": true,
+        "showLowerThresholdRange": false,
+        "showMiddleThresholdRange": true,
+        "showThresholdColorOnBackground": false,
+        "showThresholdColorOnValue": true,
+        "showThresholdOnGauge": true,
+        "showUpperThresholdRange": true,
+        "tickColMaj": "#0d5060",
+        "tickColMin": "rgb(246, 246, 246)",
+        "tickEdgeGap": 0.05,
+        "tickFont": "Courier New",
+        "tickLabelCol": "rgb(236, 233, 233)",
+        "tickLengthMaj": 0.15,
+        "tickLengthMin": 0.05,
+        "tickSpaceMajVal": 10,
+        "tickSpaceMinVal": 1,
+        "tickWidthMaj": 5,
+        "tickWidthMin": 1,
+        "ticknessGaugeBasis": 200,
+        "unitsFont": "Courier New",
+        "unitsLabelCol": "rgb(246, 246, 246)",
+        "unitsLabelFontSize": 50,
+        "valueYOffset": -20,
+        "zeroNeedleAngle": 40,
+        "zeroTickAngle": 60
+      },
+      "gaugeDivId": "d3gauge_svg_5",
+      "gridPos": {
+        "h": 9,
+        "w": 2,
+        "x": 10,
+        "y": 2
+      },
+      "id": 5,
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:143",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:144",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "markerEndShapes": [
+        {
+          "$$hashKey": "object:204",
+          "id": 0,
+          "name": "arrow"
+        }
+      ],
+      "markerStartShapes": [
+        {
+          "$$hashKey": "object:205",
+          "id": 0,
+          "name": "circle"
+        },
+        {
+          "$$hashKey": "object:206",
+          "id": 1,
+          "name": "square"
+        },
+        {
+          "$$hashKey": "object:207",
+          "id": 2,
+          "name": "stub"
+        }
+      ],
+      "operatorName": "current",
+      "operatorNameOptions": [
+        "min",
+        "max",
+        "avg",
+        "current",
+        "total",
+        "name"
+      ],
+      "pluginVersion": "7.5.7",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "svgContainer": {},
+      "targets": [
+        {
+          "application": {
+            "filter": "Servidores CL-PX"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "Zabbix server"
+          },
+          "item": {
+            "filter": "Linux: CPU utilization"
+          },
+          "itemTag": {
+            "filter": "component: cpu"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "thresholds": "60,80",
+      "tickMaps": [],
+      "title": "Total CPU utilization",
+      "transparent": true,
+      "type": "briangann-gauge-panel",
+      "unitFormats": [
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(0,0)",
+              "text": "none",
+              "value": "none"
+            },
+            {
+              "click": "menuItemSelected(0,1)",
+              "text": "String",
+              "value": "string"
+            },
+            {
+              "click": "menuItemSelected(0,2)",
+              "text": "short",
+              "value": "short"
+            },
+            {
+              "click": "menuItemSelected(0,3)",
+              "text": "Percent (0-100)",
+              "value": "percent"
+            },
+            {
+              "click": "menuItemSelected(0,4)",
+              "text": "Percent (0.0-1.0)",
+              "value": "percentunit"
+            },
+            {
+              "click": "menuItemSelected(0,5)",
+              "text": "Humidity (%H)",
+              "value": "humidity"
+            },
+            {
+              "click": "menuItemSelected(0,6)",
+              "text": "Decibel",
+              "value": "dB"
+            },
+            {
+              "click": "menuItemSelected(0,7)",
+              "text": "Hexadecimal (0x)",
+              "value": "hex0x"
+            },
+            {
+              "click": "menuItemSelected(0,8)",
+              "text": "Hexadecimal",
+              "value": "hex"
+            },
+            {
+              "click": "menuItemSelected(0,9)",
+              "text": "Scientific notation",
+              "value": "sci"
+            },
+            {
+              "click": "menuItemSelected(0,10)",
+              "text": "Locale format",
+              "value": "locale"
+            },
+            {
+              "click": "menuItemSelected(0,11)",
+              "text": "Pixels",
+              "value": "pixel"
+            }
+          ],
+          "text": "Misc"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(1,0)",
+              "text": "Meters/sec²",
+              "value": "accMS2"
+            },
+            {
+              "click": "menuItemSelected(1,1)",
+              "text": "Feet/sec²",
+              "value": "accFS2"
+            },
+            {
+              "click": "menuItemSelected(1,2)",
+              "text": "G unit",
+              "value": "accG"
+            }
+          ],
+          "text": "Acceleration"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(2,0)",
+              "text": "Degrees (°)",
+              "value": "degree"
+            },
+            {
+              "click": "menuItemSelected(2,1)",
+              "text": "Radians",
+              "value": "radian"
+            },
+            {
+              "click": "menuItemSelected(2,2)",
+              "text": "Gradian",
+              "value": "grad"
+            },
+            {
+              "click": "menuItemSelected(2,3)",
+              "text": "Arc Minutes",
+              "value": "arcmin"
+            },
+            {
+              "click": "menuItemSelected(2,4)",
+              "text": "Arc Seconds",
+              "value": "arcsec"
+            }
+          ],
+          "text": "Angle"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(3,0)",
+              "text": "Square Meters (m²)",
+              "value": "areaM2"
+            },
+            {
+              "click": "menuItemSelected(3,1)",
+              "text": "Square Feet (ft²)",
+              "value": "areaF2"
+            },
+            {
+              "click": "menuItemSelected(3,2)",
+              "text": "Square Miles (mi²)",
+              "value": "areaMI2"
+            }
+          ],
+          "text": "Area"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(4,0)",
+              "text": "FLOP/s",
+              "value": "flops"
+            },
+            {
+              "click": "menuItemSelected(4,1)",
+              "text": "MFLOP/s",
+              "value": "mflops"
+            },
+            {
+              "click": "menuItemSelected(4,2)",
+              "text": "GFLOP/s",
+              "value": "gflops"
+            },
+            {
+              "click": "menuItemSelected(4,3)",
+              "text": "TFLOP/s",
+              "value": "tflops"
+            },
+            {
+              "click": "menuItemSelected(4,4)",
+              "text": "PFLOP/s",
+              "value": "pflops"
+            },
+            {
+              "click": "menuItemSelected(4,5)",
+              "text": "EFLOP/s",
+              "value": "eflops"
+            },
+            {
+              "click": "menuItemSelected(4,6)",
+              "text": "ZFLOP/s",
+              "value": "zflops"
+            },
+            {
+              "click": "menuItemSelected(4,7)",
+              "text": "YFLOP/s",
+              "value": "yflops"
+            }
+          ],
+          "text": "Computation"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(5,0)",
+              "text": "parts-per-million (ppm)",
+              "value": "ppm"
+            },
+            {
+              "click": "menuItemSelected(5,1)",
+              "text": "parts-per-billion (ppb)",
+              "value": "conppb"
+            },
+            {
+              "click": "menuItemSelected(5,2)",
+              "text": "nanogram per cubic meter (ng/m³)",
+              "value": "conngm3"
+            },
+            {
+              "click": "menuItemSelected(5,3)",
+              "text": "nanogram per normal cubic meter (ng/Nm³)",
+              "value": "conngNm3"
+            },
+            {
+              "click": "menuItemSelected(5,4)",
+              "text": "microgram per cubic meter (μg/m³)",
+              "value": "conμgm3"
+            },
+            {
+              "click": "menuItemSelected(5,5)",
+              "text": "microgram per normal cubic meter (μg/Nm³)",
+              "value": "conμgNm3"
+            },
+            {
+              "click": "menuItemSelected(5,6)",
+              "text": "milligram per cubic meter (mg/m³)",
+              "value": "conmgm3"
+            },
+            {
+              "click": "menuItemSelected(5,7)",
+              "text": "milligram per normal cubic meter (mg/Nm³)",
+              "value": "conmgNm3"
+            },
+            {
+              "click": "menuItemSelected(5,8)",
+              "text": "gram per cubic meter (g/m³)",
+              "value": "congm3"
+            },
+            {
+              "click": "menuItemSelected(5,9)",
+              "text": "gram per normal cubic meter (g/Nm³)",
+              "value": "congNm3"
+            },
+            {
+              "click": "menuItemSelected(5,10)",
+              "text": "milligrams per decilitre (mg/dL)",
+              "value": "conmgdL"
+            },
+            {
+              "click": "menuItemSelected(5,11)",
+              "text": "millimoles per litre (mmol/L)",
+              "value": "conmmolL"
+            }
+          ],
+          "text": "Concentration"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(6,0)",
+              "text": "Dollars ($)",
+              "value": "currencyUSD"
+            },
+            {
+              "click": "menuItemSelected(6,1)",
+              "text": "Pounds (£)",
+              "value": "currencyGBP"
+            },
+            {
+              "click": "menuItemSelected(6,2)",
+              "text": "Euro (€)",
+              "value": "currencyEUR"
+            },
+            {
+              "click": "menuItemSelected(6,3)",
+              "text": "Yen (¥)",
+              "value": "currencyJPY"
+            },
+            {
+              "click": "menuItemSelected(6,4)",
+              "text": "Rubles (₽)",
+              "value": "currencyRUB"
+            },
+            {
+              "click": "menuItemSelected(6,5)",
+              "text": "Hryvnias (₴)",
+              "value": "currencyUAH"
+            },
+            {
+              "click": "menuItemSelected(6,6)",
+              "text": "Real (R$)",
+              "value": "currencyBRL"
+            },
+            {
+              "click": "menuItemSelected(6,7)",
+              "text": "Danish Krone (kr)",
+              "value": "currencyDKK"
+            },
+            {
+              "click": "menuItemSelected(6,8)",
+              "text": "Icelandic Króna (kr)",
+              "value": "currencyISK"
+            },
+            {
+              "click": "menuItemSelected(6,9)",
+              "text": "Norwegian Krone (kr)",
+              "value": "currencyNOK"
+            },
+            {
+              "click": "menuItemSelected(6,10)",
+              "text": "Swedish Krona (kr)",
+              "value": "currencySEK"
+            },
+            {
+              "click": "menuItemSelected(6,11)",
+              "text": "Czech koruna (czk)",
+              "value": "currencyCZK"
+            },
+            {
+              "click": "menuItemSelected(6,12)",
+              "text": "Swiss franc (CHF)",
+              "value": "currencyCHF"
+            },
+            {
+              "click": "menuItemSelected(6,13)",
+              "text": "Polish Złoty (PLN)",
+              "value": "currencyPLN"
+            },
+            {
+              "click": "menuItemSelected(6,14)",
+              "text": "Bitcoin (฿)",
+              "value": "currencyBTC"
+            },
+            {
+              "click": "menuItemSelected(6,15)",
+              "text": "Milli Bitcoin (฿)",
+              "value": "currencymBTC"
+            },
+            {
+              "click": "menuItemSelected(6,16)",
+              "text": "Micro Bitcoin (฿)",
+              "value": "currencyμBTC"
+            },
+            {
+              "click": "menuItemSelected(6,17)",
+              "text": "South African Rand (R)",
+              "value": "currencyZAR"
+            },
+            {
+              "click": "menuItemSelected(6,18)",
+              "text": "Indian Rupee (₹)",
+              "value": "currencyINR"
+            },
+            {
+              "click": "menuItemSelected(6,19)",
+              "text": "South Korean Won (₩)",
+              "value": "currencyKRW"
+            },
+            {
+              "click": "menuItemSelected(6,20)",
+              "text": "Indonesian Rupiah (Rp)",
+              "value": "currencyIDR"
+            },
+            {
+              "click": "menuItemSelected(6,21)",
+              "text": "Philippine Peso (PHP)",
+              "value": "currencyPHP"
+            },
+            {
+              "click": "menuItemSelected(6,22)",
+              "text": "Vietnamese Dong (VND)",
+              "value": "currencyVND"
+            }
+          ],
+          "text": "Currency"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(7,0)",
+              "text": "bytes(IEC)",
+              "value": "bytes"
+            },
+            {
+              "click": "menuItemSelected(7,1)",
+              "text": "bytes(SI)",
+              "value": "decbytes"
+            },
+            {
+              "click": "menuItemSelected(7,2)",
+              "text": "bits(IEC)",
+              "value": "bits"
+            },
+            {
+              "click": "menuItemSelected(7,3)",
+              "text": "bits(SI)",
+              "value": "decbits"
+            },
+            {
+              "click": "menuItemSelected(7,4)",
+              "text": "kibibytes",
+              "value": "kbytes"
+            },
+            {
+              "click": "menuItemSelected(7,5)",
+              "text": "kilobytes",
+              "value": "deckbytes"
+            },
+            {
+              "click": "menuItemSelected(7,6)",
+              "text": "mebibytes",
+              "value": "mbytes"
+            },
+            {
+              "click": "menuItemSelected(7,7)",
+              "text": "megabytes",
+              "value": "decmbytes"
+            },
+            {
+              "click": "menuItemSelected(7,8)",
+              "text": "gibibytes",
+              "value": "gbytes"
+            },
+            {
+              "click": "menuItemSelected(7,9)",
+              "text": "gigabytes",
+              "value": "decgbytes"
+            },
+            {
+              "click": "menuItemSelected(7,10)",
+              "text": "tebibytes",
+              "value": "tbytes"
+            },
+            {
+              "click": "menuItemSelected(7,11)",
+              "text": "terabytes",
+              "value": "dectbytes"
+            },
+            {
+              "click": "menuItemSelected(7,12)",
+              "text": "pebibytes",
+              "value": "pbytes"
+            },
+            {
+              "click": "menuItemSelected(7,13)",
+              "text": "petabytes",
+              "value": "decpbytes"
+            }
+          ],
+          "text": "Data"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(8,0)",
+              "text": "packets/sec",
+              "value": "pps"
+            },
+            {
+              "click": "menuItemSelected(8,1)",
+              "text": "bytes/sec(IEC)",
+              "value": "binBps"
+            },
+            {
+              "click": "menuItemSelected(8,2)",
+              "text": "bytes/sec(SI)",
+              "value": "Bps"
+            },
+            {
+              "click": "menuItemSelected(8,3)",
+              "text": "bits/sec(IEC)",
+              "value": "binbps"
+            },
+            {
+              "click": "menuItemSelected(8,4)",
+              "text": "bits/sec(SI)",
+              "value": "bps"
+            },
+            {
+              "click": "menuItemSelected(8,5)",
+              "text": "kibibytes/sec",
+              "value": "KiBs"
+            },
+            {
+              "click": "menuItemSelected(8,6)",
+              "text": "kibibits/sec",
+              "value": "Kibits"
+            },
+            {
+              "click": "menuItemSelected(8,7)",
+              "text": "kilobytes/sec",
+              "value": "KBs"
+            },
+            {
+              "click": "menuItemSelected(8,8)",
+              "text": "kilobits/sec",
+              "value": "Kbits"
+            },
+            {
+              "click": "menuItemSelected(8,9)",
+              "text": "mibibytes/sec",
+              "value": "MiBs"
+            },
+            {
+              "click": "menuItemSelected(8,10)",
+              "text": "mibibits/sec",
+              "value": "Mibits"
+            },
+            {
+              "click": "menuItemSelected(8,11)",
+              "text": "megabytes/sec",
+              "value": "MBs"
+            },
+            {
+              "click": "menuItemSelected(8,12)",
+              "text": "megabits/sec",
+              "value": "Mbits"
+            },
+            {
+              "click": "menuItemSelected(8,13)",
+              "text": "gibibytes/sec",
+              "value": "GiBs"
+            },
+            {
+              "click": "menuItemSelected(8,14)",
+              "text": "gibibits/sec",
+              "value": "Gibits"
+            },
+            {
+              "click": "menuItemSelected(8,15)",
+              "text": "gigabytes/sec",
+              "value": "GBs"
+            },
+            {
+              "click": "menuItemSelected(8,16)",
+              "text": "gigabits/sec",
+              "value": "Gbits"
+            },
+            {
+              "click": "menuItemSelected(8,17)",
+              "text": "tebibytes/sec",
+              "value": "TiBs"
+            },
+            {
+              "click": "menuItemSelected(8,18)",
+              "text": "tebibits/sec",
+              "value": "Tibits"
+            },
+            {
+              "click": "menuItemSelected(8,19)",
+              "text": "terabytes/sec",
+              "value": "TBs"
+            },
+            {
+              "click": "menuItemSelected(8,20)",
+              "text": "terabits/sec",
+              "value": "Tbits"
+            },
+            {
+              "click": "menuItemSelected(8,21)",
+              "text": "petibytes/sec",
+              "value": "PiBs"
+            },
+            {
+              "click": "menuItemSelected(8,22)",
+              "text": "petibits/sec",
+              "value": "Pibits"
+            },
+            {
+              "click": "menuItemSelected(8,23)",
+              "text": "petabytes/sec",
+              "value": "PBs"
+            },
+            {
+              "click": "menuItemSelected(8,24)",
+              "text": "petabits/sec",
+              "value": "Pbits"
+            }
+          ],
+          "text": "Data rate"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(9,0)",
+              "text": "Datetime ISO",
+              "value": "dateTimeAsIso"
+            },
+            {
+              "click": "menuItemSelected(9,1)",
+              "text": "Datetime ISO (No date if today)",
+              "value": "dateTimeAsIsoNoDateIfToday"
+            },
+            {
+              "click": "menuItemSelected(9,2)",
+              "text": "Datetime US",
+              "value": "dateTimeAsUS"
+            },
+            {
+              "click": "menuItemSelected(9,3)",
+              "text": "Datetime US (No date if today)",
+              "value": "dateTimeAsUSNoDateIfToday"
+            },
+            {
+              "click": "menuItemSelected(9,4)",
+              "text": "Datetime local",
+              "value": "dateTimeAsLocal"
+            },
+            {
+              "click": "menuItemSelected(9,5)",
+              "text": "Datetime local (No date if today)",
+              "value": "dateTimeAsLocalNoDateIfToday"
+            },
+            {
+              "click": "menuItemSelected(9,6)",
+              "text": "Datetime default",
+              "value": "dateTimeAsSystem"
+            },
+            {
+              "click": "menuItemSelected(9,7)",
+              "text": "From Now",
+              "value": "dateTimeFromNow"
+            }
+          ],
+          "text": "Date & time"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(10,0)",
+              "text": "Watt (W)",
+              "value": "watt"
+            },
+            {
+              "click": "menuItemSelected(10,1)",
+              "text": "Kilowatt (kW)",
+              "value": "kwatt"
+            },
+            {
+              "click": "menuItemSelected(10,2)",
+              "text": "Megawatt (MW)",
+              "value": "megwatt"
+            },
+            {
+              "click": "menuItemSelected(10,3)",
+              "text": "Gigawatt (GW)",
+              "value": "gwatt"
+            },
+            {
+              "click": "menuItemSelected(10,4)",
+              "text": "Milliwatt (mW)",
+              "value": "mwatt"
+            },
+            {
+              "click": "menuItemSelected(10,5)",
+              "text": "Watt per square meter (W/m²)",
+              "value": "Wm2"
+            },
+            {
+              "click": "menuItemSelected(10,6)",
+              "text": "Volt-ampere (VA)",
+              "value": "voltamp"
+            },
+            {
+              "click": "menuItemSelected(10,7)",
+              "text": "Kilovolt-ampere (kVA)",
+              "value": "kvoltamp"
+            },
+            {
+              "click": "menuItemSelected(10,8)",
+              "text": "Volt-ampere reactive (var)",
+              "value": "voltampreact"
+            },
+            {
+              "click": "menuItemSelected(10,9)",
+              "text": "Kilovolt-ampere reactive (kvar)",
+              "value": "kvoltampreact"
+            },
+            {
+              "click": "menuItemSelected(10,10)",
+              "text": "Watt-hour (Wh)",
+              "value": "watth"
+            },
+            {
+              "click": "menuItemSelected(10,11)",
+              "text": "Watt-hour per Kilogram (Wh/kg)",
+              "value": "watthperkg"
+            },
+            {
+              "click": "menuItemSelected(10,12)",
+              "text": "Kilowatt-hour (kWh)",
+              "value": "kwatth"
+            },
+            {
+              "click": "menuItemSelected(10,13)",
+              "text": "Kilowatt-min (kWm)",
+              "value": "kwattm"
+            },
+            {
+              "click": "menuItemSelected(10,14)",
+              "text": "Ampere-hour (Ah)",
+              "value": "amph"
+            },
+            {
+              "click": "menuItemSelected(10,15)",
+              "text": "Kiloampere-hour (kAh)",
+              "value": "kamph"
+            },
+            {
+              "click": "menuItemSelected(10,16)",
+              "text": "Milliampere-hour (mAh)",
+              "value": "mamph"
+            },
+            {
+              "click": "menuItemSelected(10,17)",
+              "text": "Joule (J)",
+              "value": "joule"
+            },
+            {
+              "click": "menuItemSelected(10,18)",
+              "text": "Electron volt (eV)",
+              "value": "ev"
+            },
+            {
+              "click": "menuItemSelected(10,19)",
+              "text": "Ampere (A)",
+              "value": "amp"
+            },
+            {
+              "click": "menuItemSelected(10,20)",
+              "text": "Kiloampere (kA)",
+              "value": "kamp"
+            },
+            {
+              "click": "menuItemSelected(10,21)",
+              "text": "Milliampere (mA)",
+              "value": "mamp"
+            },
+            {
+              "click": "menuItemSelected(10,22)",
+              "text": "Volt (V)",
+              "value": "volt"
+            },
+            {
+              "click": "menuItemSelected(10,23)",
+              "text": "Kilovolt (kV)",
+              "value": "kvolt"
+            },
+            {
+              "click": "menuItemSelected(10,24)",
+              "text": "Millivolt (mV)",
+              "value": "mvolt"
+            },
+            {
+              "click": "menuItemSelected(10,25)",
+              "text": "Decibel-milliwatt (dBm)",
+              "value": "dBm"
+            },
+            {
+              "click": "menuItemSelected(10,26)",
+              "text": "Ohm (Ω)",
+              "value": "ohm"
+            },
+            {
+              "click": "menuItemSelected(10,27)",
+              "text": "Kiloohm (kΩ)",
+              "value": "kohm"
+            },
+            {
+              "click": "menuItemSelected(10,28)",
+              "text": "Megaohm (MΩ)",
+              "value": "Mohm"
+            },
+            {
+              "click": "menuItemSelected(10,29)",
+              "text": "Farad (F)",
+              "value": "farad"
+            },
+            {
+              "click": "menuItemSelected(10,30)",
+              "text": "Microfarad (µF)",
+              "value": "µfarad"
+            },
+            {
+              "click": "menuItemSelected(10,31)",
+              "text": "Nanofarad (nF)",
+              "value": "nfarad"
+            },
+            {
+              "click": "menuItemSelected(10,32)",
+              "text": "Picofarad (pF)",
+              "value": "pfarad"
+            },
+            {
+              "click": "menuItemSelected(10,33)",
+              "text": "Femtofarad (fF)",
+              "value": "ffarad"
+            },
+            {
+              "click": "menuItemSelected(10,34)",
+              "text": "Henry (H)",
+              "value": "henry"
+            },
+            {
+              "click": "menuItemSelected(10,35)",
+              "text": "Millihenry (mH)",
+              "value": "mhenry"
+            },
+            {
+              "click": "menuItemSelected(10,36)",
+              "text": "Microhenry (µH)",
+              "value": "µhenry"
+            },
+            {
+              "click": "menuItemSelected(10,37)",
+              "text": "Lumens (Lm)",
+              "value": "lumens"
+            }
+          ],
+          "text": "Energy"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(11,0)",
+              "text": "Gallons/min (gpm)",
+              "value": "flowgpm"
+            },
+            {
+              "click": "menuItemSelected(11,1)",
+              "text": "Cubic meters/sec (cms)",
+              "value": "flowcms"
+            },
+            {
+              "click": "menuItemSelected(11,2)",
+              "text": "Cubic feet/sec (cfs)",
+              "value": "flowcfs"
+            },
+            {
+              "click": "menuItemSelected(11,3)",
+              "text": "Cubic feet/min (cfm)",
+              "value": "flowcfm"
+            },
+            {
+              "click": "menuItemSelected(11,4)",
+              "text": "Litre/hour",
+              "value": "litreh"
+            },
+            {
+              "click": "menuItemSelected(11,5)",
+              "text": "Litre/min (L/min)",
+              "value": "flowlpm"
+            },
+            {
+              "click": "menuItemSelected(11,6)",
+              "text": "milliLitre/min (mL/min)",
+              "value": "flowmlpm"
+            },
+            {
+              "click": "menuItemSelected(11,7)",
+              "text": "Lux (lx)",
+              "value": "lux"
+            }
+          ],
+          "text": "Flow"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(12,0)",
+              "text": "Newton-meters (Nm)",
+              "value": "forceNm"
+            },
+            {
+              "click": "menuItemSelected(12,1)",
+              "text": "Kilonewton-meters (kNm)",
+              "value": "forcekNm"
+            },
+            {
+              "click": "menuItemSelected(12,2)",
+              "text": "Newtons (N)",
+              "value": "forceN"
+            },
+            {
+              "click": "menuItemSelected(12,3)",
+              "text": "Kilonewtons (kN)",
+              "value": "forcekN"
+            }
+          ],
+          "text": "Force"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(13,0)",
+              "text": "hashes/sec",
+              "value": "Hs"
+            },
+            {
+              "click": "menuItemSelected(13,1)",
+              "text": "kilohashes/sec",
+              "value": "KHs"
+            },
+            {
+              "click": "menuItemSelected(13,2)",
+              "text": "megahashes/sec",
+              "value": "MHs"
+            },
+            {
+              "click": "menuItemSelected(13,3)",
+              "text": "gigahashes/sec",
+              "value": "GHs"
+            },
+            {
+              "click": "menuItemSelected(13,4)",
+              "text": "terahashes/sec",
+              "value": "THs"
+            },
+            {
+              "click": "menuItemSelected(13,5)",
+              "text": "petahashes/sec",
+              "value": "PHs"
+            },
+            {
+              "click": "menuItemSelected(13,6)",
+              "text": "exahashes/sec",
+              "value": "EHs"
+            }
+          ],
+          "text": "Hash rate"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(14,0)",
+              "text": "milligram (mg)",
+              "value": "massmg"
+            },
+            {
+              "click": "menuItemSelected(14,1)",
+              "text": "gram (g)",
+              "value": "massg"
+            },
+            {
+              "click": "menuItemSelected(14,2)",
+              "text": "kilogram (kg)",
+              "value": "masskg"
+            },
+            {
+              "click": "menuItemSelected(14,3)",
+              "text": "metric ton (t)",
+              "value": "masst"
+            }
+          ],
+          "text": "Mass"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(15,0)",
+              "text": "millimeter (mm)",
+              "value": "lengthmm"
+            },
+            {
+              "click": "menuItemSelected(15,1)",
+              "text": "feet (ft)",
+              "value": "lengthft"
+            },
+            {
+              "click": "menuItemSelected(15,2)",
+              "text": "meter (m)",
+              "value": "lengthm"
+            },
+            {
+              "click": "menuItemSelected(15,3)",
+              "text": "kilometer (km)",
+              "value": "lengthkm"
+            },
+            {
+              "click": "menuItemSelected(15,4)",
+              "text": "mile (mi)",
+              "value": "lengthmi"
+            }
+          ],
+          "text": "Length"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(16,0)",
+              "text": "Millibars",
+              "value": "pressurembar"
+            },
+            {
+              "click": "menuItemSelected(16,1)",
+              "text": "Bars",
+              "value": "pressurebar"
+            },
+            {
+              "click": "menuItemSelected(16,2)",
+              "text": "Kilobars",
+              "value": "pressurekbar"
+            },
+            {
+              "click": "menuItemSelected(16,3)",
+              "text": "Pascals",
+              "value": "pressurepa"
+            },
+            {
+              "click": "menuItemSelected(16,4)",
+              "text": "Hectopascals",
+              "value": "pressurehpa"
+            },
+            {
+              "click": "menuItemSelected(16,5)",
+              "text": "Kilopascals",
+              "value": "pressurekpa"
+            },
+            {
+              "click": "menuItemSelected(16,6)",
+              "text": "Inches of mercury",
+              "value": "pressurehg"
+            },
+            {
+              "click": "menuItemSelected(16,7)",
+              "text": "PSI",
+              "value": "pressurepsi"
+            }
+          ],
+          "text": "Pressure"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(17,0)",
+              "text": "Becquerel (Bq)",
+              "value": "radbq"
+            },
+            {
+              "click": "menuItemSelected(17,1)",
+              "text": "curie (Ci)",
+              "value": "radci"
+            },
+            {
+              "click": "menuItemSelected(17,2)",
+              "text": "Gray (Gy)",
+              "value": "radgy"
+            },
+            {
+              "click": "menuItemSelected(17,3)",
+              "text": "rad",
+              "value": "radrad"
+            },
+            {
+              "click": "menuItemSelected(17,4)",
+              "text": "Sievert (Sv)",
+              "value": "radsv"
+            },
+            {
+              "click": "menuItemSelected(17,5)",
+              "text": "milliSievert (mSv)",
+              "value": "radmsv"
+            },
+            {
+              "click": "menuItemSelected(17,6)",
+              "text": "microSievert (µSv)",
+              "value": "radusv"
+            },
+            {
+              "click": "menuItemSelected(17,7)",
+              "text": "rem",
+              "value": "radrem"
+            },
+            {
+              "click": "menuItemSelected(17,8)",
+              "text": "Exposure (C/kg)",
+              "value": "radexpckg"
+            },
+            {
+              "click": "menuItemSelected(17,9)",
+              "text": "roentgen (R)",
+              "value": "radr"
+            },
+            {
+              "click": "menuItemSelected(17,10)",
+              "text": "Sievert/hour (Sv/h)",
+              "value": "radsvh"
+            },
+            {
+              "click": "menuItemSelected(17,11)",
+              "text": "milliSievert/hour (mSv/h)",
+              "value": "radmsvh"
+            },
+            {
+              "click": "menuItemSelected(17,12)",
+              "text": "microSievert/hour (µSv/h)",
+              "value": "radusvh"
+            }
+          ],
+          "text": "Radiation"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(18,0)",
+              "text": "Revolutions per minute (rpm)",
+              "value": "rotrpm"
+            },
+            {
+              "click": "menuItemSelected(18,1)",
+              "text": "Hertz (Hz)",
+              "value": "rothz"
+            },
+            {
+              "click": "menuItemSelected(18,2)",
+              "text": "Radians per second (rad/s)",
+              "value": "rotrads"
+            },
+            {
+              "click": "menuItemSelected(18,3)",
+              "text": "Degrees per second (°/s)",
+              "value": "rotdegs"
+            }
+          ],
+          "text": "Rotational Speed"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(19,0)",
+              "text": "Celsius (°C)",
+              "value": "celsius"
+            },
+            {
+              "click": "menuItemSelected(19,1)",
+              "text": "Fahrenheit (°F)",
+              "value": "fahrenheit"
+            },
+            {
+              "click": "menuItemSelected(19,2)",
+              "text": "Kelvin (K)",
+              "value": "kelvin"
+            }
+          ],
+          "text": "Temperature"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(20,0)",
+              "text": "Hertz (1/s)",
+              "value": "hertz"
+            },
+            {
+              "click": "menuItemSelected(20,1)",
+              "text": "nanoseconds (ns)",
+              "value": "ns"
+            },
+            {
+              "click": "menuItemSelected(20,2)",
+              "text": "microseconds (µs)",
+              "value": "µs"
+            },
+            {
+              "click": "menuItemSelected(20,3)",
+              "text": "milliseconds (ms)",
+              "value": "ms"
+            },
+            {
+              "click": "menuItemSelected(20,4)",
+              "text": "seconds (s)",
+              "value": "s"
+            },
+            {
+              "click": "menuItemSelected(20,5)",
+              "text": "minutes (m)",
+              "value": "m"
+            },
+            {
+              "click": "menuItemSelected(20,6)",
+              "text": "hours (h)",
+              "value": "h"
+            },
+            {
+              "click": "menuItemSelected(20,7)",
+              "text": "days (d)",
+              "value": "d"
+            },
+            {
+              "click": "menuItemSelected(20,8)",
+              "text": "duration (ms)",
+              "value": "dtdurationms"
+            },
+            {
+              "click": "menuItemSelected(20,9)",
+              "text": "duration (s)",
+              "value": "dtdurations"
+            },
+            {
+              "click": "menuItemSelected(20,10)",
+              "text": "duration (hh:mm:ss)",
+              "value": "dthms"
+            },
+            {
+              "click": "menuItemSelected(20,11)",
+              "text": "duration (d hh:mm:ss)",
+              "value": "dtdhms"
+            },
+            {
+              "click": "menuItemSelected(20,12)",
+              "text": "Timeticks (s/100)",
+              "value": "timeticks"
+            },
+            {
+              "click": "menuItemSelected(20,13)",
+              "text": "clock (ms)",
+              "value": "clockms"
+            },
+            {
+              "click": "menuItemSelected(20,14)",
+              "text": "clock (s)",
+              "value": "clocks"
+            }
+          ],
+          "text": "Time"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(21,0)",
+              "text": "counts/sec (cps)",
+              "value": "cps"
+            },
+            {
+              "click": "menuItemSelected(21,1)",
+              "text": "ops/sec (ops)",
+              "value": "ops"
+            },
+            {
+              "click": "menuItemSelected(21,2)",
+              "text": "requests/sec (rps)",
+              "value": "reqps"
+            },
+            {
+              "click": "menuItemSelected(21,3)",
+              "text": "reads/sec (rps)",
+              "value": "rps"
+            },
+            {
+              "click": "menuItemSelected(21,4)",
+              "text": "writes/sec (wps)",
+              "value": "wps"
+            },
+            {
+              "click": "menuItemSelected(21,5)",
+              "text": "I/O ops/sec (iops)",
+              "value": "iops"
+            },
+            {
+              "click": "menuItemSelected(21,6)",
+              "text": "counts/min (cpm)",
+              "value": "cpm"
+            },
+            {
+              "click": "menuItemSelected(21,7)",
+              "text": "ops/min (opm)",
+              "value": "opm"
+            },
+            {
+              "click": "menuItemSelected(21,8)",
+              "text": "reads/min (rpm)",
+              "value": "rpm"
+            },
+            {
+              "click": "menuItemSelected(21,9)",
+              "text": "writes/min (wpm)",
+              "value": "wpm"
+            }
+          ],
+          "text": "Throughput"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(22,0)",
+              "text": "meters/second (m/s)",
+              "value": "velocityms"
+            },
+            {
+              "click": "menuItemSelected(22,1)",
+              "text": "kilometers/hour (km/h)",
+              "value": "velocitykmh"
+            },
+            {
+              "click": "menuItemSelected(22,2)",
+              "text": "miles/hour (mph)",
+              "value": "velocitymph"
+            },
+            {
+              "click": "menuItemSelected(22,3)",
+              "text": "knot (kn)",
+              "value": "velocityknot"
+            }
+          ],
+          "text": "Velocity"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(23,0)",
+              "text": "millilitre (mL)",
+              "value": "mlitre"
+            },
+            {
+              "click": "menuItemSelected(23,1)",
+              "text": "litre (L)",
+              "value": "litre"
+            },
+            {
+              "click": "menuItemSelected(23,2)",
+              "text": "cubic meter",
+              "value": "m3"
+            },
+            {
+              "click": "menuItemSelected(23,3)",
+              "text": "Normal cubic meter",
+              "value": "Nm3"
+            },
+            {
+              "click": "menuItemSelected(23,4)",
+              "text": "cubic decimeter",
+              "value": "dm3"
+            },
+            {
+              "click": "menuItemSelected(23,5)",
+              "text": "gallons",
+              "value": "gallons"
+            }
+          ],
+          "text": "Volume"
+        }
+      ],
+      "valueMaps": [
+        {
+          "$$hashKey": "object:146",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ]
+    },
+    {
+      "colors": [
+        "rgba(255, 255, 255, 0.97)",
+        "#E0B400",
+        "#C4162A"
+      ],
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "decimals": 1,
+      "fontSizes": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        24,
+        26,
+        28,
+        30,
+        32,
+        34,
+        36,
+        38,
+        40,
+        42,
+        44,
+        46,
+        48,
+        50,
+        52,
+        54,
+        56,
+        58,
+        60,
+        62,
+        64,
+        66,
+        68,
+        70
+      ],
+      "fontTypes": [
+        "Arial",
+        "Avant Garde",
+        "Bookman",
+        "Consolas",
+        "Courier",
+        "Courier New",
+        "Garamond",
+        "Helvetica",
+        "Open Sans",
+        "Palatino",
+        "Times",
+        "Times New Roman",
+        "Verdana"
+      ],
+      "format": "percent",
+      "gauge": {
+        "animateNeedleValueTransition": true,
+        "animateNeedleValueTransitionSpeed": 100,
+        "edgeWidth": 0.05,
+        "gaugeRadius": 180,
+        "gaugeUnits": "",
+        "innerCol": "rgba(13, 80, 96, 0)",
+        "labelFontSize": 18,
+        "markerEndEnabled": false,
+        "markerEndShape": {
+          "$$hashKey": "object:204",
+          "id": 0,
+          "name": "arrow"
+        },
+        "markerStartEnabled": false,
+        "markerStartShape": {
+          "$$hashKey": "object:207",
+          "id": 2,
+          "name": "stub"
+        },
+        "maxNeedleAngle": 320,
+        "maxTickAngle": 300,
+        "maxValue": 100,
+        "minValue": 0,
+        "needleCol": "#C4162A",
+        "needleLengthNeg": 0.2,
+        "needleTickGap": 0.05,
+        "needleWidth": 5,
+        "outerEdgeCol": "rgba(0, 0, 0, 0)",
+        "padding": 0.05,
+        "pivotCol": "#999",
+        "pivotRadius": 0.1,
+        "show": true,
+        "showLowerThresholdRange": false,
+        "showMiddleThresholdRange": true,
+        "showThresholdColorOnBackground": false,
+        "showThresholdColorOnValue": true,
+        "showThresholdOnGauge": true,
+        "showUpperThresholdRange": true,
+        "tickColMaj": "#0d5060",
+        "tickColMin": "rgb(246, 246, 246)",
+        "tickEdgeGap": 0.05,
+        "tickFont": "Courier New",
+        "tickLabelCol": "rgb(236, 233, 233)",
+        "tickLengthMaj": 0.15,
+        "tickLengthMin": 0.05,
+        "tickSpaceMajVal": 10,
+        "tickSpaceMinVal": 1,
+        "tickWidthMaj": 5,
+        "tickWidthMin": 1,
+        "ticknessGaugeBasis": 200,
+        "unitsFont": "Courier New",
+        "unitsLabelCol": "rgb(246, 246, 246)",
+        "unitsLabelFontSize": 50,
+        "valueYOffset": -20,
+        "zeroNeedleAngle": 40,
+        "zeroTickAngle": 60
+      },
+      "gaugeDivId": "d3gauge_svg_6",
+      "gridPos": {
+        "h": 9,
+        "w": 2,
+        "x": 12,
+        "y": 2
+      },
+      "id": 6,
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "$$hashKey": "object:143",
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "$$hashKey": "object:144",
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "markerEndShapes": [
+        {
+          "$$hashKey": "object:204",
+          "id": 0,
+          "name": "arrow"
+        }
+      ],
+      "markerStartShapes": [
+        {
+          "$$hashKey": "object:205",
+          "id": 0,
+          "name": "circle"
+        },
+        {
+          "$$hashKey": "object:206",
+          "id": 1,
+          "name": "square"
+        },
+        {
+          "$$hashKey": "object:207",
+          "id": 2,
+          "name": "stub"
+        }
+      ],
+      "operatorName": "current",
+      "operatorNameOptions": [
+        "min",
+        "max",
+        "avg",
+        "current",
+        "total",
+        "name"
+      ],
+      "pluginVersion": "7.5.7",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "svgContainer": {},
+      "targets": [
+        {
+          "application": {
+            "filter": "Servidores CL-PX"
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "Zabbix server"
+          },
+          "item": {
+            "filter": "Linux: Memory utilization"
+          },
+          "itemTag": {
+            "filter": "component: memory"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": true,
+            "disableDataAlignment": false,
+            "minSeverity": 3,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2
+          }
+        }
+      ],
+      "thresholds": "70,80",
+      "tickMaps": [],
+      "title": "Total de Memória RAM em uso",
+      "transparent": true,
+      "type": "briangann-gauge-panel",
+      "unitFormats": [
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(0,0)",
+              "text": "none",
+              "value": "none"
+            },
+            {
+              "click": "menuItemSelected(0,1)",
+              "text": "String",
+              "value": "string"
+            },
+            {
+              "click": "menuItemSelected(0,2)",
+              "text": "short",
+              "value": "short"
+            },
+            {
+              "click": "menuItemSelected(0,3)",
+              "text": "Percent (0-100)",
+              "value": "percent"
+            },
+            {
+              "click": "menuItemSelected(0,4)",
+              "text": "Percent (0.0-1.0)",
+              "value": "percentunit"
+            },
+            {
+              "click": "menuItemSelected(0,5)",
+              "text": "Humidity (%H)",
+              "value": "humidity"
+            },
+            {
+              "click": "menuItemSelected(0,6)",
+              "text": "Decibel",
+              "value": "dB"
+            },
+            {
+              "click": "menuItemSelected(0,7)",
+              "text": "Hexadecimal (0x)",
+              "value": "hex0x"
+            },
+            {
+              "click": "menuItemSelected(0,8)",
+              "text": "Hexadecimal",
+              "value": "hex"
+            },
+            {
+              "click": "menuItemSelected(0,9)",
+              "text": "Scientific notation",
+              "value": "sci"
+            },
+            {
+              "click": "menuItemSelected(0,10)",
+              "text": "Locale format",
+              "value": "locale"
+            },
+            {
+              "click": "menuItemSelected(0,11)",
+              "text": "Pixels",
+              "value": "pixel"
+            }
+          ],
+          "text": "Misc"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(1,0)",
+              "text": "Meters/sec²",
+              "value": "accMS2"
+            },
+            {
+              "click": "menuItemSelected(1,1)",
+              "text": "Feet/sec²",
+              "value": "accFS2"
+            },
+            {
+              "click": "menuItemSelected(1,2)",
+              "text": "G unit",
+              "value": "accG"
+            }
+          ],
+          "text": "Acceleration"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(2,0)",
+              "text": "Degrees (°)",
+              "value": "degree"
+            },
+            {
+              "click": "menuItemSelected(2,1)",
+              "text": "Radians",
+              "value": "radian"
+            },
+            {
+              "click": "menuItemSelected(2,2)",
+              "text": "Gradian",
+              "value": "grad"
+            },
+            {
+              "click": "menuItemSelected(2,3)",
+              "text": "Arc Minutes",
+              "value": "arcmin"
+            },
+            {
+              "click": "menuItemSelected(2,4)",
+              "text": "Arc Seconds",
+              "value": "arcsec"
+            }
+          ],
+          "text": "Angle"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(3,0)",
+              "text": "Square Meters (m²)",
+              "value": "areaM2"
+            },
+            {
+              "click": "menuItemSelected(3,1)",
+              "text": "Square Feet (ft²)",
+              "value": "areaF2"
+            },
+            {
+              "click": "menuItemSelected(3,2)",
+              "text": "Square Miles (mi²)",
+              "value": "areaMI2"
+            }
+          ],
+          "text": "Area"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(4,0)",
+              "text": "FLOP/s",
+              "value": "flops"
+            },
+            {
+              "click": "menuItemSelected(4,1)",
+              "text": "MFLOP/s",
+              "value": "mflops"
+            },
+            {
+              "click": "menuItemSelected(4,2)",
+              "text": "GFLOP/s",
+              "value": "gflops"
+            },
+            {
+              "click": "menuItemSelected(4,3)",
+              "text": "TFLOP/s",
+              "value": "tflops"
+            },
+            {
+              "click": "menuItemSelected(4,4)",
+              "text": "PFLOP/s",
+              "value": "pflops"
+            },
+            {
+              "click": "menuItemSelected(4,5)",
+              "text": "EFLOP/s",
+              "value": "eflops"
+            },
+            {
+              "click": "menuItemSelected(4,6)",
+              "text": "ZFLOP/s",
+              "value": "zflops"
+            },
+            {
+              "click": "menuItemSelected(4,7)",
+              "text": "YFLOP/s",
+              "value": "yflops"
+            }
+          ],
+          "text": "Computation"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(5,0)",
+              "text": "parts-per-million (ppm)",
+              "value": "ppm"
+            },
+            {
+              "click": "menuItemSelected(5,1)",
+              "text": "parts-per-billion (ppb)",
+              "value": "conppb"
+            },
+            {
+              "click": "menuItemSelected(5,2)",
+              "text": "nanogram per cubic meter (ng/m³)",
+              "value": "conngm3"
+            },
+            {
+              "click": "menuItemSelected(5,3)",
+              "text": "nanogram per normal cubic meter (ng/Nm³)",
+              "value": "conngNm3"
+            },
+            {
+              "click": "menuItemSelected(5,4)",
+              "text": "microgram per cubic meter (μg/m³)",
+              "value": "conμgm3"
+            },
+            {
+              "click": "menuItemSelected(5,5)",
+              "text": "microgram per normal cubic meter (μg/Nm³)",
+              "value": "conμgNm3"
+            },
+            {
+              "click": "menuItemSelected(5,6)",
+              "text": "milligram per cubic meter (mg/m³)",
+              "value": "conmgm3"
+            },
+            {
+              "click": "menuItemSelected(5,7)",
+              "text": "milligram per normal cubic meter (mg/Nm³)",
+              "value": "conmgNm3"
+            },
+            {
+              "click": "menuItemSelected(5,8)",
+              "text": "gram per cubic meter (g/m³)",
+              "value": "congm3"
+            },
+            {
+              "click": "menuItemSelected(5,9)",
+              "text": "gram per normal cubic meter (g/Nm³)",
+              "value": "congNm3"
+            },
+            {
+              "click": "menuItemSelected(5,10)",
+              "text": "milligrams per decilitre (mg/dL)",
+              "value": "conmgdL"
+            },
+            {
+              "click": "menuItemSelected(5,11)",
+              "text": "millimoles per litre (mmol/L)",
+              "value": "conmmolL"
+            }
+          ],
+          "text": "Concentration"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(6,0)",
+              "text": "Dollars ($)",
+              "value": "currencyUSD"
+            },
+            {
+              "click": "menuItemSelected(6,1)",
+              "text": "Pounds (£)",
+              "value": "currencyGBP"
+            },
+            {
+              "click": "menuItemSelected(6,2)",
+              "text": "Euro (€)",
+              "value": "currencyEUR"
+            },
+            {
+              "click": "menuItemSelected(6,3)",
+              "text": "Yen (¥)",
+              "value": "currencyJPY"
+            },
+            {
+              "click": "menuItemSelected(6,4)",
+              "text": "Rubles (₽)",
+              "value": "currencyRUB"
+            },
+            {
+              "click": "menuItemSelected(6,5)",
+              "text": "Hryvnias (₴)",
+              "value": "currencyUAH"
+            },
+            {
+              "click": "menuItemSelected(6,6)",
+              "text": "Real (R$)",
+              "value": "currencyBRL"
+            },
+            {
+              "click": "menuItemSelected(6,7)",
+              "text": "Danish Krone (kr)",
+              "value": "currencyDKK"
+            },
+            {
+              "click": "menuItemSelected(6,8)",
+              "text": "Icelandic Króna (kr)",
+              "value": "currencyISK"
+            },
+            {
+              "click": "menuItemSelected(6,9)",
+              "text": "Norwegian Krone (kr)",
+              "value": "currencyNOK"
+            },
+            {
+              "click": "menuItemSelected(6,10)",
+              "text": "Swedish Krona (kr)",
+              "value": "currencySEK"
+            },
+            {
+              "click": "menuItemSelected(6,11)",
+              "text": "Czech koruna (czk)",
+              "value": "currencyCZK"
+            },
+            {
+              "click": "menuItemSelected(6,12)",
+              "text": "Swiss franc (CHF)",
+              "value": "currencyCHF"
+            },
+            {
+              "click": "menuItemSelected(6,13)",
+              "text": "Polish Złoty (PLN)",
+              "value": "currencyPLN"
+            },
+            {
+              "click": "menuItemSelected(6,14)",
+              "text": "Bitcoin (฿)",
+              "value": "currencyBTC"
+            },
+            {
+              "click": "menuItemSelected(6,15)",
+              "text": "Milli Bitcoin (฿)",
+              "value": "currencymBTC"
+            },
+            {
+              "click": "menuItemSelected(6,16)",
+              "text": "Micro Bitcoin (฿)",
+              "value": "currencyμBTC"
+            },
+            {
+              "click": "menuItemSelected(6,17)",
+              "text": "South African Rand (R)",
+              "value": "currencyZAR"
+            },
+            {
+              "click": "menuItemSelected(6,18)",
+              "text": "Indian Rupee (₹)",
+              "value": "currencyINR"
+            },
+            {
+              "click": "menuItemSelected(6,19)",
+              "text": "South Korean Won (₩)",
+              "value": "currencyKRW"
+            },
+            {
+              "click": "menuItemSelected(6,20)",
+              "text": "Indonesian Rupiah (Rp)",
+              "value": "currencyIDR"
+            },
+            {
+              "click": "menuItemSelected(6,21)",
+              "text": "Philippine Peso (PHP)",
+              "value": "currencyPHP"
+            },
+            {
+              "click": "menuItemSelected(6,22)",
+              "text": "Vietnamese Dong (VND)",
+              "value": "currencyVND"
+            }
+          ],
+          "text": "Currency"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(7,0)",
+              "text": "bytes(IEC)",
+              "value": "bytes"
+            },
+            {
+              "click": "menuItemSelected(7,1)",
+              "text": "bytes(SI)",
+              "value": "decbytes"
+            },
+            {
+              "click": "menuItemSelected(7,2)",
+              "text": "bits(IEC)",
+              "value": "bits"
+            },
+            {
+              "click": "menuItemSelected(7,3)",
+              "text": "bits(SI)",
+              "value": "decbits"
+            },
+            {
+              "click": "menuItemSelected(7,4)",
+              "text": "kibibytes",
+              "value": "kbytes"
+            },
+            {
+              "click": "menuItemSelected(7,5)",
+              "text": "kilobytes",
+              "value": "deckbytes"
+            },
+            {
+              "click": "menuItemSelected(7,6)",
+              "text": "mebibytes",
+              "value": "mbytes"
+            },
+            {
+              "click": "menuItemSelected(7,7)",
+              "text": "megabytes",
+              "value": "decmbytes"
+            },
+            {
+              "click": "menuItemSelected(7,8)",
+              "text": "gibibytes",
+              "value": "gbytes"
+            },
+            {
+              "click": "menuItemSelected(7,9)",
+              "text": "gigabytes",
+              "value": "decgbytes"
+            },
+            {
+              "click": "menuItemSelected(7,10)",
+              "text": "tebibytes",
+              "value": "tbytes"
+            },
+            {
+              "click": "menuItemSelected(7,11)",
+              "text": "terabytes",
+              "value": "dectbytes"
+            },
+            {
+              "click": "menuItemSelected(7,12)",
+              "text": "pebibytes",
+              "value": "pbytes"
+            },
+            {
+              "click": "menuItemSelected(7,13)",
+              "text": "petabytes",
+              "value": "decpbytes"
+            }
+          ],
+          "text": "Data"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(8,0)",
+              "text": "packets/sec",
+              "value": "pps"
+            },
+            {
+              "click": "menuItemSelected(8,1)",
+              "text": "bytes/sec(IEC)",
+              "value": "binBps"
+            },
+            {
+              "click": "menuItemSelected(8,2)",
+              "text": "bytes/sec(SI)",
+              "value": "Bps"
+            },
+            {
+              "click": "menuItemSelected(8,3)",
+              "text": "bits/sec(IEC)",
+              "value": "binbps"
+            },
+            {
+              "click": "menuItemSelected(8,4)",
+              "text": "bits/sec(SI)",
+              "value": "bps"
+            },
+            {
+              "click": "menuItemSelected(8,5)",
+              "text": "kibibytes/sec",
+              "value": "KiBs"
+            },
+            {
+              "click": "menuItemSelected(8,6)",
+              "text": "kibibits/sec",
+              "value": "Kibits"
+            },
+            {
+              "click": "menuItemSelected(8,7)",
+              "text": "kilobytes/sec",
+              "value": "KBs"
+            },
+            {
+              "click": "menuItemSelected(8,8)",
+              "text": "kilobits/sec",
+              "value": "Kbits"
+            },
+            {
+              "click": "menuItemSelected(8,9)",
+              "text": "mibibytes/sec",
+              "value": "MiBs"
+            },
+            {
+              "click": "menuItemSelected(8,10)",
+              "text": "mibibits/sec",
+              "value": "Mibits"
+            },
+            {
+              "click": "menuItemSelected(8,11)",
+              "text": "megabytes/sec",
+              "value": "MBs"
+            },
+            {
+              "click": "menuItemSelected(8,12)",
+              "text": "megabits/sec",
+              "value": "Mbits"
+            },
+            {
+              "click": "menuItemSelected(8,13)",
+              "text": "gibibytes/sec",
+              "value": "GiBs"
+            },
+            {
+              "click": "menuItemSelected(8,14)",
+              "text": "gibibits/sec",
+              "value": "Gibits"
+            },
+            {
+              "click": "menuItemSelected(8,15)",
+              "text": "gigabytes/sec",
+              "value": "GBs"
+            },
+            {
+              "click": "menuItemSelected(8,16)",
+              "text": "gigabits/sec",
+              "value": "Gbits"
+            },
+            {
+              "click": "menuItemSelected(8,17)",
+              "text": "tebibytes/sec",
+              "value": "TiBs"
+            },
+            {
+              "click": "menuItemSelected(8,18)",
+              "text": "tebibits/sec",
+              "value": "Tibits"
+            },
+            {
+              "click": "menuItemSelected(8,19)",
+              "text": "terabytes/sec",
+              "value": "TBs"
+            },
+            {
+              "click": "menuItemSelected(8,20)",
+              "text": "terabits/sec",
+              "value": "Tbits"
+            },
+            {
+              "click": "menuItemSelected(8,21)",
+              "text": "petibytes/sec",
+              "value": "PiBs"
+            },
+            {
+              "click": "menuItemSelected(8,22)",
+              "text": "petibits/sec",
+              "value": "Pibits"
+            },
+            {
+              "click": "menuItemSelected(8,23)",
+              "text": "petabytes/sec",
+              "value": "PBs"
+            },
+            {
+              "click": "menuItemSelected(8,24)",
+              "text": "petabits/sec",
+              "value": "Pbits"
+            }
+          ],
+          "text": "Data rate"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(9,0)",
+              "text": "Datetime ISO",
+              "value": "dateTimeAsIso"
+            },
+            {
+              "click": "menuItemSelected(9,1)",
+              "text": "Datetime ISO (No date if today)",
+              "value": "dateTimeAsIsoNoDateIfToday"
+            },
+            {
+              "click": "menuItemSelected(9,2)",
+              "text": "Datetime US",
+              "value": "dateTimeAsUS"
+            },
+            {
+              "click": "menuItemSelected(9,3)",
+              "text": "Datetime US (No date if today)",
+              "value": "dateTimeAsUSNoDateIfToday"
+            },
+            {
+              "click": "menuItemSelected(9,4)",
+              "text": "Datetime local",
+              "value": "dateTimeAsLocal"
+            },
+            {
+              "click": "menuItemSelected(9,5)",
+              "text": "Datetime local (No date if today)",
+              "value": "dateTimeAsLocalNoDateIfToday"
+            },
+            {
+              "click": "menuItemSelected(9,6)",
+              "text": "Datetime default",
+              "value": "dateTimeAsSystem"
+            },
+            {
+              "click": "menuItemSelected(9,7)",
+              "text": "From Now",
+              "value": "dateTimeFromNow"
+            }
+          ],
+          "text": "Date & time"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(10,0)",
+              "text": "Watt (W)",
+              "value": "watt"
+            },
+            {
+              "click": "menuItemSelected(10,1)",
+              "text": "Kilowatt (kW)",
+              "value": "kwatt"
+            },
+            {
+              "click": "menuItemSelected(10,2)",
+              "text": "Megawatt (MW)",
+              "value": "megwatt"
+            },
+            {
+              "click": "menuItemSelected(10,3)",
+              "text": "Gigawatt (GW)",
+              "value": "gwatt"
+            },
+            {
+              "click": "menuItemSelected(10,4)",
+              "text": "Milliwatt (mW)",
+              "value": "mwatt"
+            },
+            {
+              "click": "menuItemSelected(10,5)",
+              "text": "Watt per square meter (W/m²)",
+              "value": "Wm2"
+            },
+            {
+              "click": "menuItemSelected(10,6)",
+              "text": "Volt-ampere (VA)",
+              "value": "voltamp"
+            },
+            {
+              "click": "menuItemSelected(10,7)",
+              "text": "Kilovolt-ampere (kVA)",
+              "value": "kvoltamp"
+            },
+            {
+              "click": "menuItemSelected(10,8)",
+              "text": "Volt-ampere reactive (var)",
+              "value": "voltampreact"
+            },
+            {
+              "click": "menuItemSelected(10,9)",
+              "text": "Kilovolt-ampere reactive (kvar)",
+              "value": "kvoltampreact"
+            },
+            {
+              "click": "menuItemSelected(10,10)",
+              "text": "Watt-hour (Wh)",
+              "value": "watth"
+            },
+            {
+              "click": "menuItemSelected(10,11)",
+              "text": "Watt-hour per Kilogram (Wh/kg)",
+              "value": "watthperkg"
+            },
+            {
+              "click": "menuItemSelected(10,12)",
+              "text": "Kilowatt-hour (kWh)",
+              "value": "kwatth"
+            },
+            {
+              "click": "menuItemSelected(10,13)",
+              "text": "Kilowatt-min (kWm)",
+              "value": "kwattm"
+            },
+            {
+              "click": "menuItemSelected(10,14)",
+              "text": "Ampere-hour (Ah)",
+              "value": "amph"
+            },
+            {
+              "click": "menuItemSelected(10,15)",
+              "text": "Kiloampere-hour (kAh)",
+              "value": "kamph"
+            },
+            {
+              "click": "menuItemSelected(10,16)",
+              "text": "Milliampere-hour (mAh)",
+              "value": "mamph"
+            },
+            {
+              "click": "menuItemSelected(10,17)",
+              "text": "Joule (J)",
+              "value": "joule"
+            },
+            {
+              "click": "menuItemSelected(10,18)",
+              "text": "Electron volt (eV)",
+              "value": "ev"
+            },
+            {
+              "click": "menuItemSelected(10,19)",
+              "text": "Ampere (A)",
+              "value": "amp"
+            },
+            {
+              "click": "menuItemSelected(10,20)",
+              "text": "Kiloampere (kA)",
+              "value": "kamp"
+            },
+            {
+              "click": "menuItemSelected(10,21)",
+              "text": "Milliampere (mA)",
+              "value": "mamp"
+            },
+            {
+              "click": "menuItemSelected(10,22)",
+              "text": "Volt (V)",
+              "value": "volt"
+            },
+            {
+              "click": "menuItemSelected(10,23)",
+              "text": "Kilovolt (kV)",
+              "value": "kvolt"
+            },
+            {
+              "click": "menuItemSelected(10,24)",
+              "text": "Millivolt (mV)",
+              "value": "mvolt"
+            },
+            {
+              "click": "menuItemSelected(10,25)",
+              "text": "Decibel-milliwatt (dBm)",
+              "value": "dBm"
+            },
+            {
+              "click": "menuItemSelected(10,26)",
+              "text": "Ohm (Ω)",
+              "value": "ohm"
+            },
+            {
+              "click": "menuItemSelected(10,27)",
+              "text": "Kiloohm (kΩ)",
+              "value": "kohm"
+            },
+            {
+              "click": "menuItemSelected(10,28)",
+              "text": "Megaohm (MΩ)",
+              "value": "Mohm"
+            },
+            {
+              "click": "menuItemSelected(10,29)",
+              "text": "Farad (F)",
+              "value": "farad"
+            },
+            {
+              "click": "menuItemSelected(10,30)",
+              "text": "Microfarad (µF)",
+              "value": "µfarad"
+            },
+            {
+              "click": "menuItemSelected(10,31)",
+              "text": "Nanofarad (nF)",
+              "value": "nfarad"
+            },
+            {
+              "click": "menuItemSelected(10,32)",
+              "text": "Picofarad (pF)",
+              "value": "pfarad"
+            },
+            {
+              "click": "menuItemSelected(10,33)",
+              "text": "Femtofarad (fF)",
+              "value": "ffarad"
+            },
+            {
+              "click": "menuItemSelected(10,34)",
+              "text": "Henry (H)",
+              "value": "henry"
+            },
+            {
+              "click": "menuItemSelected(10,35)",
+              "text": "Millihenry (mH)",
+              "value": "mhenry"
+            },
+            {
+              "click": "menuItemSelected(10,36)",
+              "text": "Microhenry (µH)",
+              "value": "µhenry"
+            },
+            {
+              "click": "menuItemSelected(10,37)",
+              "text": "Lumens (Lm)",
+              "value": "lumens"
+            }
+          ],
+          "text": "Energy"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(11,0)",
+              "text": "Gallons/min (gpm)",
+              "value": "flowgpm"
+            },
+            {
+              "click": "menuItemSelected(11,1)",
+              "text": "Cubic meters/sec (cms)",
+              "value": "flowcms"
+            },
+            {
+              "click": "menuItemSelected(11,2)",
+              "text": "Cubic feet/sec (cfs)",
+              "value": "flowcfs"
+            },
+            {
+              "click": "menuItemSelected(11,3)",
+              "text": "Cubic feet/min (cfm)",
+              "value": "flowcfm"
+            },
+            {
+              "click": "menuItemSelected(11,4)",
+              "text": "Litre/hour",
+              "value": "litreh"
+            },
+            {
+              "click": "menuItemSelected(11,5)",
+              "text": "Litre/min (L/min)",
+              "value": "flowlpm"
+            },
+            {
+              "click": "menuItemSelected(11,6)",
+              "text": "milliLitre/min (mL/min)",
+              "value": "flowmlpm"
+            },
+            {
+              "click": "menuItemSelected(11,7)",
+              "text": "Lux (lx)",
+              "value": "lux"
+            }
+          ],
+          "text": "Flow"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(12,0)",
+              "text": "Newton-meters (Nm)",
+              "value": "forceNm"
+            },
+            {
+              "click": "menuItemSelected(12,1)",
+              "text": "Kilonewton-meters (kNm)",
+              "value": "forcekNm"
+            },
+            {
+              "click": "menuItemSelected(12,2)",
+              "text": "Newtons (N)",
+              "value": "forceN"
+            },
+            {
+              "click": "menuItemSelected(12,3)",
+              "text": "Kilonewtons (kN)",
+              "value": "forcekN"
+            }
+          ],
+          "text": "Force"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(13,0)",
+              "text": "hashes/sec",
+              "value": "Hs"
+            },
+            {
+              "click": "menuItemSelected(13,1)",
+              "text": "kilohashes/sec",
+              "value": "KHs"
+            },
+            {
+              "click": "menuItemSelected(13,2)",
+              "text": "megahashes/sec",
+              "value": "MHs"
+            },
+            {
+              "click": "menuItemSelected(13,3)",
+              "text": "gigahashes/sec",
+              "value": "GHs"
+            },
+            {
+              "click": "menuItemSelected(13,4)",
+              "text": "terahashes/sec",
+              "value": "THs"
+            },
+            {
+              "click": "menuItemSelected(13,5)",
+              "text": "petahashes/sec",
+              "value": "PHs"
+            },
+            {
+              "click": "menuItemSelected(13,6)",
+              "text": "exahashes/sec",
+              "value": "EHs"
+            }
+          ],
+          "text": "Hash rate"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(14,0)",
+              "text": "milligram (mg)",
+              "value": "massmg"
+            },
+            {
+              "click": "menuItemSelected(14,1)",
+              "text": "gram (g)",
+              "value": "massg"
+            },
+            {
+              "click": "menuItemSelected(14,2)",
+              "text": "kilogram (kg)",
+              "value": "masskg"
+            },
+            {
+              "click": "menuItemSelected(14,3)",
+              "text": "metric ton (t)",
+              "value": "masst"
+            }
+          ],
+          "text": "Mass"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(15,0)",
+              "text": "millimeter (mm)",
+              "value": "lengthmm"
+            },
+            {
+              "click": "menuItemSelected(15,1)",
+              "text": "feet (ft)",
+              "value": "lengthft"
+            },
+            {
+              "click": "menuItemSelected(15,2)",
+              "text": "meter (m)",
+              "value": "lengthm"
+            },
+            {
+              "click": "menuItemSelected(15,3)",
+              "text": "kilometer (km)",
+              "value": "lengthkm"
+            },
+            {
+              "click": "menuItemSelected(15,4)",
+              "text": "mile (mi)",
+              "value": "lengthmi"
+            }
+          ],
+          "text": "Length"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(16,0)",
+              "text": "Millibars",
+              "value": "pressurembar"
+            },
+            {
+              "click": "menuItemSelected(16,1)",
+              "text": "Bars",
+              "value": "pressurebar"
+            },
+            {
+              "click": "menuItemSelected(16,2)",
+              "text": "Kilobars",
+              "value": "pressurekbar"
+            },
+            {
+              "click": "menuItemSelected(16,3)",
+              "text": "Pascals",
+              "value": "pressurepa"
+            },
+            {
+              "click": "menuItemSelected(16,4)",
+              "text": "Hectopascals",
+              "value": "pressurehpa"
+            },
+            {
+              "click": "menuItemSelected(16,5)",
+              "text": "Kilopascals",
+              "value": "pressurekpa"
+            },
+            {
+              "click": "menuItemSelected(16,6)",
+              "text": "Inches of mercury",
+              "value": "pressurehg"
+            },
+            {
+              "click": "menuItemSelected(16,7)",
+              "text": "PSI",
+              "value": "pressurepsi"
+            }
+          ],
+          "text": "Pressure"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(17,0)",
+              "text": "Becquerel (Bq)",
+              "value": "radbq"
+            },
+            {
+              "click": "menuItemSelected(17,1)",
+              "text": "curie (Ci)",
+              "value": "radci"
+            },
+            {
+              "click": "menuItemSelected(17,2)",
+              "text": "Gray (Gy)",
+              "value": "radgy"
+            },
+            {
+              "click": "menuItemSelected(17,3)",
+              "text": "rad",
+              "value": "radrad"
+            },
+            {
+              "click": "menuItemSelected(17,4)",
+              "text": "Sievert (Sv)",
+              "value": "radsv"
+            },
+            {
+              "click": "menuItemSelected(17,5)",
+              "text": "milliSievert (mSv)",
+              "value": "radmsv"
+            },
+            {
+              "click": "menuItemSelected(17,6)",
+              "text": "microSievert (µSv)",
+              "value": "radusv"
+            },
+            {
+              "click": "menuItemSelected(17,7)",
+              "text": "rem",
+              "value": "radrem"
+            },
+            {
+              "click": "menuItemSelected(17,8)",
+              "text": "Exposure (C/kg)",
+              "value": "radexpckg"
+            },
+            {
+              "click": "menuItemSelected(17,9)",
+              "text": "roentgen (R)",
+              "value": "radr"
+            },
+            {
+              "click": "menuItemSelected(17,10)",
+              "text": "Sievert/hour (Sv/h)",
+              "value": "radsvh"
+            },
+            {
+              "click": "menuItemSelected(17,11)",
+              "text": "milliSievert/hour (mSv/h)",
+              "value": "radmsvh"
+            },
+            {
+              "click": "menuItemSelected(17,12)",
+              "text": "microSievert/hour (µSv/h)",
+              "value": "radusvh"
+            }
+          ],
+          "text": "Radiation"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(18,0)",
+              "text": "Revolutions per minute (rpm)",
+              "value": "rotrpm"
+            },
+            {
+              "click": "menuItemSelected(18,1)",
+              "text": "Hertz (Hz)",
+              "value": "rothz"
+            },
+            {
+              "click": "menuItemSelected(18,2)",
+              "text": "Radians per second (rad/s)",
+              "value": "rotrads"
+            },
+            {
+              "click": "menuItemSelected(18,3)",
+              "text": "Degrees per second (°/s)",
+              "value": "rotdegs"
+            }
+          ],
+          "text": "Rotational Speed"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(19,0)",
+              "text": "Celsius (°C)",
+              "value": "celsius"
+            },
+            {
+              "click": "menuItemSelected(19,1)",
+              "text": "Fahrenheit (°F)",
+              "value": "fahrenheit"
+            },
+            {
+              "click": "menuItemSelected(19,2)",
+              "text": "Kelvin (K)",
+              "value": "kelvin"
+            }
+          ],
+          "text": "Temperature"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(20,0)",
+              "text": "Hertz (1/s)",
+              "value": "hertz"
+            },
+            {
+              "click": "menuItemSelected(20,1)",
+              "text": "nanoseconds (ns)",
+              "value": "ns"
+            },
+            {
+              "click": "menuItemSelected(20,2)",
+              "text": "microseconds (µs)",
+              "value": "µs"
+            },
+            {
+              "click": "menuItemSelected(20,3)",
+              "text": "milliseconds (ms)",
+              "value": "ms"
+            },
+            {
+              "click": "menuItemSelected(20,4)",
+              "text": "seconds (s)",
+              "value": "s"
+            },
+            {
+              "click": "menuItemSelected(20,5)",
+              "text": "minutes (m)",
+              "value": "m"
+            },
+            {
+              "click": "menuItemSelected(20,6)",
+              "text": "hours (h)",
+              "value": "h"
+            },
+            {
+              "click": "menuItemSelected(20,7)",
+              "text": "days (d)",
+              "value": "d"
+            },
+            {
+              "click": "menuItemSelected(20,8)",
+              "text": "duration (ms)",
+              "value": "dtdurationms"
+            },
+            {
+              "click": "menuItemSelected(20,9)",
+              "text": "duration (s)",
+              "value": "dtdurations"
+            },
+            {
+              "click": "menuItemSelected(20,10)",
+              "text": "duration (hh:mm:ss)",
+              "value": "dthms"
+            },
+            {
+              "click": "menuItemSelected(20,11)",
+              "text": "duration (d hh:mm:ss)",
+              "value": "dtdhms"
+            },
+            {
+              "click": "menuItemSelected(20,12)",
+              "text": "Timeticks (s/100)",
+              "value": "timeticks"
+            },
+            {
+              "click": "menuItemSelected(20,13)",
+              "text": "clock (ms)",
+              "value": "clockms"
+            },
+            {
+              "click": "menuItemSelected(20,14)",
+              "text": "clock (s)",
+              "value": "clocks"
+            }
+          ],
+          "text": "Time"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(21,0)",
+              "text": "counts/sec (cps)",
+              "value": "cps"
+            },
+            {
+              "click": "menuItemSelected(21,1)",
+              "text": "ops/sec (ops)",
+              "value": "ops"
+            },
+            {
+              "click": "menuItemSelected(21,2)",
+              "text": "requests/sec (rps)",
+              "value": "reqps"
+            },
+            {
+              "click": "menuItemSelected(21,3)",
+              "text": "reads/sec (rps)",
+              "value": "rps"
+            },
+            {
+              "click": "menuItemSelected(21,4)",
+              "text": "writes/sec (wps)",
+              "value": "wps"
+            },
+            {
+              "click": "menuItemSelected(21,5)",
+              "text": "I/O ops/sec (iops)",
+              "value": "iops"
+            },
+            {
+              "click": "menuItemSelected(21,6)",
+              "text": "counts/min (cpm)",
+              "value": "cpm"
+            },
+            {
+              "click": "menuItemSelected(21,7)",
+              "text": "ops/min (opm)",
+              "value": "opm"
+            },
+            {
+              "click": "menuItemSelected(21,8)",
+              "text": "reads/min (rpm)",
+              "value": "rpm"
+            },
+            {
+              "click": "menuItemSelected(21,9)",
+              "text": "writes/min (wpm)",
+              "value": "wpm"
+            }
+          ],
+          "text": "Throughput"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(22,0)",
+              "text": "meters/second (m/s)",
+              "value": "velocityms"
+            },
+            {
+              "click": "menuItemSelected(22,1)",
+              "text": "kilometers/hour (km/h)",
+              "value": "velocitykmh"
+            },
+            {
+              "click": "menuItemSelected(22,2)",
+              "text": "miles/hour (mph)",
+              "value": "velocitymph"
+            },
+            {
+              "click": "menuItemSelected(22,3)",
+              "text": "knot (kn)",
+              "value": "velocityknot"
+            }
+          ],
+          "text": "Velocity"
+        },
+        {
+          "submenu": [
+            {
+              "click": "menuItemSelected(23,0)",
+              "text": "millilitre (mL)",
+              "value": "mlitre"
+            },
+            {
+              "click": "menuItemSelected(23,1)",
+              "text": "litre (L)",
+              "value": "litre"
+            },
+            {
+              "click": "menuItemSelected(23,2)",
+              "text": "cubic meter",
+              "value": "m3"
+            },
+            {
+              "click": "menuItemSelected(23,3)",
+              "text": "Normal cubic meter",
+              "value": "Nm3"
+            },
+            {
+              "click": "menuItemSelected(23,4)",
+              "text": "cubic decimeter",
+              "value": "dm3"
+            },
+            {
+              "click": "menuItemSelected(23,5)",
+              "text": "gallons",
+              "value": "gallons"
+            }
+          ],
+          "text": "Volume"
+        }
+      ],
+      "valueMaps": [
+        {
+          "$$hashKey": "object:146",
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ]
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 5,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 3,
+            "pointSize": 0,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "Zabbix server: Linux: Load average (1m avg)"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server:  Load average (15m avg)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "dark-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server:  Load average (1m avg)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: Online CPUs"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-YlBl"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 10,
+        "x": 0,
+        "y": 10
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Linux:)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/Linux: CPU.*/"
+          },
+          "itemTag": {
+            "filter": "component: cpu"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "CPU Usage",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+      },
+      "gridPos": {
+        "h": 1,
+        "w": 4,
+        "x": 18,
+        "y": 10
+      },
+      "id": 4,
+      "options": {
+        "activeTheme": "Night Theme",
+        "disableThemePicker": true,
+        "themes": [
+          {
+            "name": "Night Theme",
+            "styles": [
+              {
+                "props": {
+                  "theme": "default"
+                },
+                "type": "basetheme"
+              },
+              {
+                "props": {
+                  "url": "https://images.unsplash.com/photo-1524334228333-0f6db392f8a1"
+                },
+                "type": "bgimage"
+              },
+              {
+                "props": {
+                  "text": ".panel-container {\n    background-color: rgba(0,0,0,0.3);\n}"
+                },
+                "type": "style"
+              }
+            ]
+          }
+        ]
+      },
+      "pluginVersion": "0.2.1",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "options": {
+            "showDisabledItems": false,
+            "skipEmptyValues": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": 0,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "yesoreyeram-boomtheme-panel"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 9,
+        "x": 10,
+        "y": 11
+      },
+      "id": 15,
+      "options": {
+        "ackEventColor": "rgb(56, 219, 156)",
+        "ackField": false,
+        "ageField": false,
+        "allowDangerousHTML": false,
+        "customLastChangeFormat": false,
+        "descriptionAtNewLine": false,
+        "descriptionField": true,
+        "fontSize": "120%",
+        "highlightBackground": false,
+        "highlightNewEvents": false,
+        "highlightNewerThan": "1h",
+        "hostField": true,
+        "hostGroups": false,
+        "hostProxy": false,
+        "hostTechNameField": false,
+        "lastChangeFormat": "",
+        "layout": "table",
+        "markAckEvents": false,
+        "okEventColor": "rgb(56, 189, 113)",
+        "opdataField": false,
+        "pageSize": 10,
+        "problemTimeline": true,
+        "severityField": true,
+        "showTags": false,
+        "sortProblems": "lastchange",
+        "statusField": false,
+        "statusIcon": true,
+        "triggerSeverity": [
+          {
+            "color": "rgb(108, 108, 108)",
+            "priority": 0,
+            "severity": "Not classified",
+            "show": true
+          },
+          {
+            "color": "rgb(120, 158, 183)",
+            "priority": 1,
+            "severity": "Information",
+            "show": true
+          },
+          {
+            "color": "rgb(175, 180, 36)",
+            "priority": 2,
+            "severity": "Warning",
+            "show": true
+          },
+          {
+            "color": "rgb(255, 137, 30)",
+            "priority": 3,
+            "severity": "Average",
+            "show": true
+          },
+          {
+            "color": "rgb(255, 101, 72)",
+            "priority": 4,
+            "severity": "High",
+            "show": true
+          },
+          {
+            "color": "rgb(215, 0, 0)",
+            "priority": 5,
+            "severity": "Disaster",
+            "show": true
+          }
+        ]
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "acknowledged": 2,
+            "count": false,
+            "disableDataAlignment": false,
+            "hostProxy": false,
+            "hostsInMaintenance": false,
+            "limit": 1001,
+            "minSeverity": 0,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "sortProblems": "default",
+            "useTimeRange": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "5",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "showProblems": "problems",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "Problemas",
+      "transparent": true,
+      "type": "alexanderzobnin-zabbix-triggers-panel"
+    },
+    {
+      "activePatternIndex": 1,
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "defaultPattern": {
+        "bgColors": "green|orange|red",
+        "bgColors_overrides": "0->green|2->red|1->yellow",
+        "clickable_cells_link": "",
+        "col_name": "Valor",
+        "decimals": "0",
+        "defaultBGColor": "transparent",
+        "defaultTextColor": "",
+        "delimiter": ":",
+        "displayTemplate": "_value_",
+        "enable_bgColor": false,
+        "enable_bgColor_overrides": false,
+        "enable_clickable_cells": false,
+        "enable_textColor": false,
+        "enable_textColor_overrides": false,
+        "enable_time_based_thresholds": false,
+        "enable_transform": false,
+        "enable_transform_overrides": false,
+        "filter": {
+          "value_above": "",
+          "value_below": ""
+        },
+        "format": "none",
+        "name": "Default Pattern",
+        "null_color": "",
+        "null_textcolor": "black",
+        "null_value": "_fa-bomb,DarkRed_",
+        "pattern": "*",
+        "row_col_wrapper": "_",
+        "row_name": "_series_",
+        "textColors": "red|orange|green",
+        "textColors_overrides": "0->red|2->green|1->yellow",
+        "thresholds": "45,50",
+        "time_based_thresholds": [],
+        "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+        "transform_values": "_fa-cubes,green_ _value_|_fa-cubes,OrangeRed_ _value_|_fa-cubes,DarkRed_ _value_",
+        "transform_values_overrides": "0->down|1->up",
+        "valueName": "current"
+      },
+      "default_title_for_rows": "Metric",
+      "font_size": "1.8rem",
+      "gridPos": {
+        "h": 28,
+        "w": 5,
+        "x": 19,
+        "y": 11
+      },
+      "hideTimeOverride": true,
+      "hide_first_column": false,
+      "hide_headers": true,
+      "id": 9,
+      "patterns": [
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "Valor",
+          "decimals": "0",
+          "defaultBGColor": "",
+          "defaultTextColor": "",
+          "delimiter": ".",
+          "displayTemplate": "_value_",
+          "enable_bgColor": false,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": true,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "CL-PX05",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "^.*PX05$",
+          "row_col_wrapper": "_",
+          "row_name": "_0_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "30,45",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_fa-cubes,green_ _value_|_fa-cubes,OrangeRed_ _value_|_fa-cubes,DarkRed_ _value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "Valor",
+          "decimals": "0",
+          "defaultBGColor": "",
+          "defaultTextColor": "",
+          "delimiter": ":",
+          "displayTemplate": "_value_",
+          "enable_bgColor": false,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": true,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "Containers total",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "^.*Containers total$",
+          "row_col_wrapper": "_",
+          "row_name": "_2_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "30,45",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_img-https://uploaddeimagens.com.br/images/004/509/768/thumb/Docker-icon.png?1686942482,40px,40px_ _value_|_https://uploaddeimagens.com.br/images/004/509/768/thumb/Docker-icon.png?1686942482,40px,40px_ _value_|_https://uploaddeimagens.com.br/images/004/509/768/thumb/Docker-icon.png?1686942482,40px,40px_ _value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "Valor",
+          "decimals": "0",
+          "defaultBGColor": "",
+          "defaultTextColor": "",
+          "delimiter": ":",
+          "displayTemplate": "_value_",
+          "enable_bgColor": false,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": true,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": true,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "decbits",
+          "name": "Memory usage",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "_img-https://uploaddeimagens.com.br/images/004/516/752/thumb/Memoria-Green.png?1687454728,40px,px_ _value_ 0 Mb",
+          "pattern": "^.*Memory usage$",
+          "row_col_wrapper": "_",
+          "row_name": "_1_ _2_",
+          "textColors": "green|yellow|orange|red",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "3000000000,5000000000,7000000000",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_img-https://uploaddeimagens.com.br/images/004/516/752/thumb/Memoria-Green.png?1687454728,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/754/thumb/Memoria-Yellow.png?1687454768,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/761/thumb/Memoria-Orange.png?1687454838,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/765/thumb/Memoria-Red.png?1687454878,40px,px_ _value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "Valor",
+          "decimals": "0",
+          "defaultBGColor": "",
+          "defaultTextColor": "",
+          "delimiter": ":",
+          "displayTemplate": "_value_",
+          "enable_bgColor": false,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": true,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "Containers running",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "^.*Containers running$",
+          "row_col_wrapper": "_",
+          "row_name": "_2_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "1,200",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_img-https://uploaddeimagens.com.br/images/004/509/768/thumb/Docker-icon.png?1686942482,45px,45px_ _value_|_img-https://uploaddeimagens.com.br/images/004/509/768/thumb/Docker-icon.png?1686942482,45px,45px_ _value_|_img-https://uploaddeimagens.com.br/images/004/509/768/thumb/Docker-icon.png?1686942482,45px,45px_ _value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "lime|green|orange|red|",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "Valor",
+          "decimals": "3",
+          "defaultBGColor": "",
+          "defaultTextColor": "",
+          "delimiter": ":",
+          "displayTemplate": "_value_",
+          "enable_bgColor": false,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": true,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": true,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "percent",
+          "name": "CPU percent usage",
+          "null_color": "",
+          "null_textcolor": "green",
+          "null_value": "_img-https://uploaddeimagens.com.br/images/004/516/515/thumb/Green-Gauge.png?1687445639,40px,px_  0%",
+          "pattern": "^.*CPU percent usage$",
+          "row_col_wrapper": "_",
+          "row_name": "_1__2_",
+          "textColors": "green|green|green|yellow|orange|red|red",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "10,20,30,40,50,60",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_img-https://uploaddeimagens.com.br/images/004/516/515/thumb/Green-Gauge.png?1687445639,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/517/thumb/Green-2-Gauge.png?1687445732,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/518/thumb/Green-3-Gauge.png?1687445763,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/521/thumb/Mid-Gauge.png?1687445807,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/523/thumb/Yellow-Gauge.png?1687445846,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/524/thumb/Orange-Gauge.png?1687445893,40px,px_ _value_|_img-https://uploaddeimagens.com.br/images/004/516/526/thumb/Red-Gauge.png?1687445921,40px,px_ _value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "Valor",
+          "decimals": "0",
+          "defaultBGColor": "",
+          "defaultTextColor": "",
+          "delimiter": ":",
+          "displayTemplate": "_value_",
+          "enable_bgColor": false,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": true,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": true,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "none",
+          "name": "Ping",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "^.*ing.*$",
+          "row_col_wrapper": "_",
+          "row_name": "_1_ _2_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "0,1",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_fa-cloud-download,darkred_ down|_fa-cubes,OrangeRed_ _value_|_fa-cloud-upload,green_   up",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "current"
+        },
+        {
+          "bgColors": "green|orange|red",
+          "bgColors_overrides": "0->green|2->red|1->yellow",
+          "clickable_cells_link": "",
+          "col_name": "Valor",
+          "decimals": 2,
+          "defaultBGColor": "",
+          "defaultTextColor": "",
+          "delimiter": ":",
+          "displayTemplate": "_value_",
+          "enable_bgColor": false,
+          "enable_bgColor_overrides": false,
+          "enable_clickable_cells": false,
+          "enable_textColor": false,
+          "enable_textColor_overrides": false,
+          "enable_time_based_thresholds": false,
+          "enable_transform": false,
+          "enable_transform_overrides": false,
+          "filter": {
+            "value_above": "",
+            "value_below": ""
+          },
+          "format": "dtdhms",
+          "name": "System Uptime",
+          "null_color": "darkred",
+          "null_textcolor": "black",
+          "null_value": "No data",
+          "pattern": "^.*uptime.*$",
+          "row_col_wrapper": "_",
+          "row_name": "_1_ _2_",
+          "textColors": "red|orange|green",
+          "textColors_overrides": "0->red|2->green|1->yellow",
+          "thresholds": "70,90",
+          "time_based_thresholds": [],
+          "tooltipTemplate": "Series : _series_ <br/>Row Name : _row_name_ <br/>Col Name : _col_name_ <br/>Value : _value_",
+          "transform_values": "_value_|_value_|_value_",
+          "transform_values_overrides": "0->down|1->up",
+          "valueName": "current"
+        }
+      ],
+      "pluginVersion": "7.5.7",
+      "row_col_wrapper": "_",
+      "sorting_props": {
+        "col_index": -1,
+        "direction": "desc"
+      },
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Docker: Containers running"
+          },
+          "itemTag": {
+            "filter": "component: containers"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Container..)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/.*CPU percent usage/"
+          },
+          "itemTag": {
+            "filter": "/container:.*/"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Container..)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/.*Memory usage/"
+          },
+          "itemTag": {
+            "filter": "/container:.*/"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Linux: Zabbix agent ping"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Linux: System uptime"
+          },
+          "itemTag": {
+            "filter": "component: system"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c4d17d50-21d3-4dc9-b1ae-98b51d090f93"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Docker: Containers total"
+          },
+          "itemTag": {
+            "filter": "component: containers"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "G",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "Docker info",
+      "transparent": true,
+      "type": "yesoreyeram-boomtable-panel"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisWidth": 50,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: Interface eth0: Bits sent"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ea0cda",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 10,
+        "x": 0,
+        "y": 20
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Networks bytes sent per second)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Zabbix server..)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/.*Networks bytes sent per second.*/"
+          },
+          "itemTag": {
+            "filter": "component: network"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Bits sent)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Interface eth0: Bits sent"
+          },
+          "itemTag": {
+            "filter": "component: network"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "Networks bytes sent per second",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: Interface eth0: Bits received"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#ea0cda",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 10,
+        "x": 0,
+        "y": 29
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Networks bytes received per second)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            },
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Zabbix server..)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/.*Networks bytes received per second.*/"
+          },
+          "itemTag": {
+            "filter": "component: network"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Bits received)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "Interface eth0: Bits received"
+          },
+          "itemTag": {
+            "filter": "component: network"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "Networks bytes received per second",
+      "transparent": true,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "decimals": 0,
+          "mappings": [],
+          "unit": "decbits"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: /etc/hosts: Total space"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "semi-dark-blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: /etc/hosts: Used space"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 10,
+        "y": 37
+      },
+      "id": 3,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.5.3",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/etc/hosts: Used space"
+          },
+          "itemTag": {
+            "filter": "component: storage"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/etc/hosts: Total space"
+          },
+          "itemTag": {
+            "filter": "component: storage"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "Storage",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "alexanderzobnin-zabbix-datasource",
+        "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 4,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: nvme0n1: Disk read request avg waiting time (r_await)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Zabbix server: nvme0n1: Disk write request avg waiting time (w_await)"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "light-red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 10,
+        "x": 0,
+        "y": 38
+      },
+      "id": 16,
+      "options": {
+        "legend": {
+          "calcs": [
+            "last",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Zabbix server..)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/.*Disk read request.*/"
+          },
+          "itemTag": {
+            "filter": "$Disk"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        },
+        {
+          "application": {
+            "filter": ""
+          },
+          "countTriggersBy": "",
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+          },
+          "functions": [
+            {
+              "added": true,
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/(?:Zabbix server..)(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "Zabbix servers"
+          },
+          "hide": false,
+          "host": {
+            "filter": "$Host"
+          },
+          "item": {
+            "filter": "/.*Disk write request.*/"
+          },
+          "itemTag": {
+            "filter": "$Disk"
+          },
+          "macro": {
+            "filter": ""
+          },
+          "options": {
+            "count": false,
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useTrends": "default",
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "schema": 12,
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "textFilter": "",
+          "trigger": {
+            "filter": ""
+          }
+        }
+      ],
+      "title": "Disk read/write request avg waiting time $Disk",
+      "transparent": true,
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "ZabbixServer"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Zabbix server",
+          "value": "Zabbix server"
+        },
+        "datasource": {
+          "type": "alexanderzobnin-zabbix-datasource",
+          "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+        },
+        "definition": "Zabbix - host",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Host",
+        "multi": false,
+        "name": "Host",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "Zabbix servers",
+          "host": "Zabbix server",
+          "item": "",
+          "itemTag": "",
+          "queryType": "host"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "disk: nvme0n1",
+          "value": "disk: nvme0n1"
+        },
+        "datasource": {
+          "type": "alexanderzobnin-zabbix-datasource",
+          "uid": "c0935c9a-0b2e-4a93-92ea-31a2bd5cd29a"
+        },
+        "definition": "Zabbix - itemTag",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Disk",
+        "multi": false,
+        "name": "Disk",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "Zabbix servers",
+          "host": "Zabbix server",
+          "item": "",
+          "itemTag": "/disk./",
+          "queryType": "itemTag"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-3h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Zabbix Server",
+  "uid": "d723a1ca-f7a6-47ab-aead-0954560f3c7b",
+  "version": 99,
+  "weekStart": ""
+}
