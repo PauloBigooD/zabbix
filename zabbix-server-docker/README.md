@@ -1,5 +1,5 @@
-# What is [![Zabbix](https://img.shields.io/badge/ZABBIX-FF0000?style=plastic&logo=zotero&logoColor=write)]()?
-
+# What is 
+[![Zabbix](https://img.shields.io/badge/ZABBIX-FF0000?style=plastic&logo=zotero&logoColor=write)]()?
 Zabbix is an open-source monitoring software tool used to monitor and track performance and availability of servers, networks, applications, and services. It provides real-time monitoring, alerting, and visualization of data. Zabbix can be used to monitor various metrics such as CPU usage, memory usage, disk space, network traffic, and more. It is highly scalable and can be customized to meet the specific monitoring needs of an organization.
 
 + **The Zabbix installation for monitoring network assets can be installed in three ways:** 
@@ -109,10 +109,60 @@ Before you install Docker Engine for the first time on a new host machine, you n
 
 ## Install Zabbix Server
 
+The Zabbix Server installation will be based on the settings present in the docker-compose.yml file, the file is in this repository.
+
+The first step is to define a location to perform the repository clone. In this tutorial the location `/home` was chosen
+
     cd /home
-    git clone 
+    git clone https://github.com/PauloBigooD/Zabbix.git
+    cd Zabbix/zabbix-server-docker
 
+If we run the `ls` command we can see the docker-compose.yml file.
+    
+[![Zabbix](https://uploaddeimagens.com.br/images/004/574/976/full/ls-zabbix-server-docker.png?1691948983)]()
 
+Now it is possible to run the services present in the `docker-composer.yml` file, if you so wish, just run the following command:
 
+      docker compose up -d
 
+[![Zabbix](https://uploaddeimagens.com.br/images/004/575/001/full/docker-compose-up-d.png?1691950921)]()
 
+For security reasons, it might be interesting to change some variables in the docker-compose.yml file. These changes must be made without `docker compose` running, to confirm run the following commands: `docker compose stop` and `docker compose rm -f`. Now adjust the following variables as needed.
+
+```yml
+    environment:                                                # Username, password and database name variables
+      POSTGRES_USER: zabbix                                     # Database user
+      POSTGRES_PASSWORD: zabbix                                 # Database password
+      POSTGRES_DB: zabbix                                       # Database name
+```
+
+Note that these variables appear more than once in the file and all occurrences must be adjusted.
+
+```yml
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: Grafana                        # Grafana admin user access password
+```
+
+When completing the necessary adjustments, provision the services again
+
+      docker compose up -d
+
+### How to access Zabbix Server and Grafana API?
+
+To access the Zabbix API, we just need to access a WEB browser and access the following address:
+
+http://127.0.0.1:80
+
+By entering the address above you will be redirected to the following page:
+
+[![Zabbix](https://uploaddeimagens.com.br/images/004/575/013/full/login.png?1691952921)]()
+
+To access, simply enter the following information in the login and password fields:
+```
+Login: Admin
+Password: zabbix
+```
+
+After login, you will be redirected to the following screen:
+
+[![Zabbix](https://uploaddeimagens.com.br/images/004/575/014/full/dash.png?1691953034)]()
