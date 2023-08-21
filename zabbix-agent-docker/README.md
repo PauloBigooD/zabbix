@@ -1,23 +1,9 @@
-  # **Install Zabbix repository**
-  
-    wget https://repo.zabbix.com/zabbix/6.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.0-4+ubuntu22.04_all.deb
+Check the following variables from the zabbix_agent2.conf file
 
-    dpkg -i zabbix-release_6.0-4+ubuntu22.04_all.deb
+```ỳml
+  Server=IP-Zabbix-Server
 
-    apt update
-    
-# **Install Zabbix agent**
+  ServerActive=IP-Zabbix-Server:10051
 
-    apt install zabbix-agent
-    
-# **Edit zabbix-agent.config**
-
-    vi /etc/zabbix/zabbix_agentd.conf
-    
-  - Change the following options
-      
-      `Server=172.31.0.135`
-      
-      `ServerActive=172.31.0.135`
-      
-      `Hostname=Informar nome do host`
+  Hostname=Host-Name
+```
