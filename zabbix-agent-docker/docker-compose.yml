@@ -10,7 +10,7 @@ networks:
 
 services:              
   zabbix-agent:
-    container_name: zabbix-agent-NoteLenovo
+    container_name: zabbix-agent
     build:
       context: ./                                      # Adjust as per location of Dockerfile-server file
       dockerfile: Dockerfile-agent
@@ -27,5 +27,5 @@ services:
     ports:
       - '10050:10050'
     environment:
-      - ZBX_HOSTNAME="Host Name"
-      - ZBX_SERVER_HOST="IP Zabbix Server"
+      - ZBX_HOSTNAME=Host-Name
+      - ZBX_SERVER_HOST=IP-Zabbix-Server
