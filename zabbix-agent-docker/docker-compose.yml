@@ -12,8 +12,8 @@ services:
   zabbix-agent:
     container_name: zabbix-agent
     build:
-      context: ./                                      # Adjust as per location of Dockerfile-server file
-      dockerfile: Dockerfile-agent
+      context: ./                                                      # Adjust as per location of Dockerfile-server file
+      dockerfile: Dockerfile-agent                                     # Dockerfile containing the zabbix agent container specifications
     user: root
     networks:
       - network-zabbix-agent
@@ -21,11 +21,11 @@ services:
     privileged: true
     volumes:
       - /var/run:/var/run
-      - ./etc/zabbix/externalscripts:/etc/zabbix/externalscripts
-      - ./etc/zabbix/alertscripts:/etc/zabbix/alertscripts
-      - ./etc/zabbix/zabbix_agent2.conf:/etc/zabbix/zabbix_agent2.conf
+      - ./etc/zabbix/externalscripts:/etc/zabbix/externalscripts        # Repository to allocate external scripts
+      - ./etc/zabbix/alertscripts:/etc/zabbix/alertscripts              # Repository to allocate alert scripts
+      - ./etc/zabbix/zabbix_agent2.conf:/etc/zabbix/zabbix_agent2.conf  # In this file it is important to check the Hostname and IP of the Zabbix Server
     ports:
       - '10050:10050'
     environment:
-      - ZBX_HOSTNAME=Host-Name
-      - ZBX_SERVER_HOST=IP-Zabbix-Server
+      - ZBX_HOSTNAME=Host_Name                                          # Hostname of the machine under monitoring must be the same as the one configured in Zabbix Serve
+      - ZBX_SERVER_HOST=Zabbix_Serve_IP                                 # Zabbix Serve IP

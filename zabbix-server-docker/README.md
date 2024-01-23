@@ -1,5 +1,5 @@
-# What is 
-[![Zabbix](https://img.shields.io/badge/ZABBIX-FF0000?style=plastic&logo=zotero&logoColor=write)]()?
+# What is [![Zabbix](https://img.shields.io/badge/ZABBIX-FF0000?style=plastic&logo=zotero&logoColor=write)]()?
+
 Zabbix is an open-source monitoring software tool used to monitor and track performance and availability of servers, networks, applications, and services. It provides real-time monitoring, alerting, and visualization of data. Zabbix can be used to monitor various metrics such as CPU usage, memory usage, disk space, network traffic, and more. It is highly scalable and can be customized to meet the specific monitoring needs of an organization.
 
 + **The Zabbix installation for monitoring network assets can be installed in three ways:** 
@@ -33,6 +33,14 @@ Older versions of Docker went by the names of `docker`, `docker.io`, or `docker-
 > `apt-get` might report that you have none of these packages installed.
 
 Images, containers, volumes, and networks stored in `/var/lib/docker/` aren’t automatically removed when you uninstall Docker. If you want to start with a clean installation, and prefer to clean up any existing data, read the uninstall Docker Engine section.
+
+### Install using shell script
+
+If you wish, there is the option to run the automatic Docker installation script `install-docker.sh`. After accessing the **zabbix/zabbix-server-docker** repository, type the following command:
+
+      ./install-docker.sh
+
+Now just wait for the installation to finish!
 
 ### Install using the apt repository
 
@@ -166,3 +174,26 @@ Password: zabbix
 After login, you will be redirected to the following screen:
 
 [![Zabbix](https://uploaddeimagens.com.br/images/004/575/014/full/dash.png?1691953034)]()
+
+---
+
+### Note that the Grafana Server service is also provisioned in this deployment. 
+
+To access grafana, go to the following address:
+
+http://127.0.0.1:3000
+
+By entering the address above you will be redirected to the following page:
+
+[![Grafana](https://uploaddeimagens.com.br/images/004/719/611/original/grafana_login.png?1705946573)]()
+
+To access, simply enter the following information in the login and password fields:
+
+```
+Login: admin
+Password: Grafana
+```
+
+After login, you will be redirected to the following screen:
+
+[![Grafana](https://uploaddeimagens.com.br/images/004/719/616/original/welcome_grafana.png?1705946757)]()

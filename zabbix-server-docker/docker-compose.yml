@@ -11,7 +11,7 @@ networks:
 services:
   postgres-server:                                              # The Postgres Database Service
     container_name: postgres-server
-    image: postgres:latest                                      # Container image
+    image: postgres:15-alpine3.17                               # Container image
     networks:
      - network-zabbix
     restart: always

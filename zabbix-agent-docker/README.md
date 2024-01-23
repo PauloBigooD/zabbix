@@ -22,12 +22,18 @@ Zabbix agents can perform passive and active checks.
 
 ---
 
-Check the following variables from the zabbix_agent2.conf file
+Check the following variables from the zabbix_agent2.conf file in ./etc/zabbix/zabbix_agent2.conf
 
 ```ỳml
-  Server=IP-Zabbix-Server
+  Server=Zabbix_Serve_IP
 
-  ServerActive=IP-Zabbix-Server:10051
+  ServerActive=Zabbix_Serve_IP:10051
 
-  Hostname=Host-Name
+  Hostname=Host_Name
+```
+Also check the docker-compose.yml file for the following settings
+```ỳml
+    environment:
+      - ZBX_HOSTNAME=Host_Name                                          # Hostname of the machine under monitoring must be the same as the one configured in Zabbix Serve
+      - ZBX_SERVER_HOST=Zabbix_Serve_IP                                 # Zabbix Serve IP
 ```
