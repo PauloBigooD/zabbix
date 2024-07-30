@@ -1,10 +1,18 @@
 FROM zabbix/zabbix-server-pgsql:ubuntu-latest 
+
 USER root
-RUN apt-get update
-RUN ln -fs /usr/share/zoneinfo/America/Recife /etc/localtime
-RUN export DEBIAN_FRONTEND=noninteractive
-RUN apt-get install -y tzdata
-RUN dpkg-reconfigure --frontend noninteractive tzdata 
-RUN apt-get install vim snmpd snmp libsnmp-dev php-snmp php php-fpm php-opcache python3 python3-pip net-tools -y
-RUN apt-get update && apt-get upgrade -y
-RUN pip3 install pyTelegramBotAPI
+
+# Set timezone and install necessary packages
+RUN ln -fs /usr/share/zoneinfo/America/Recife /etc/localtime \
+    && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends tzdata \
+    && dpkg-reconfigure --frontend noninteractive tzdata \
+    && apt-get install -y --no-install-recommends vim snmpd snmp libsnmp-dev php-snmp php php-fpm php-opcache python3 python3-pip net-tools \
+    && apt-get update && apt-get upgrade -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set timezone environment variable
+ENV TZ=America/Recife
+
