@@ -1,5 +1,3 @@
-version: '3.8'
-
 networks:
   network-zabbix-agent:
     driver: bridge
@@ -26,6 +24,4 @@ services:
       - ./etc/zabbix/zabbix_agent2.conf:/etc/zabbix/zabbix_agent2.conf  # In this file it is important to check the Hostname and IP of the Zabbix Server
     ports:
       - '10050:10050'
-    environment:
-      - ZBX_HOSTNAME=Host_Name                                          # Hostname of the machine under monitoring must be the same as the one configured in Zabbix Serve
-      - ZBX_SERVER_HOST=Zabbix_Serve_IP                                 # Zabbix Serve IP
+
